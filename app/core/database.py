@@ -1,19 +1,15 @@
 """
 database.py - Database configuration and session management.
 
-This module sets up the SQLAlchemy engine, session maker, and Base model class.
-It ensures that database connections are properly created and closed, following
-FastAPI's dependency injection pattern.
+This module sets up the SQLAlchemy engine and session maker.
+It reuses the shared declarative Base from app.models.base so the
+application, models, and Alembic all operate on the same metadata.
 """
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
-
-# -------------------------------------------------------------------
-# SQLAlchemy Base model
-# -------------------------------------------------------------------
-Base = declarative_base()
+from app.models.base import Base
 
 # -------------------------------------------------------------------
 # Engine configuration

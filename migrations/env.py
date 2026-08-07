@@ -17,8 +17,10 @@ from app.models.base import Base
 # access to the values within the .ini file in use.
 config = context.config
 
-# Override sqlalchemy.url from settings
-config.set_main_option("sqlalchemy.url", str(settings.database_url))
+# Override sqlalchemy.url from settings.
+# Alembic's config parser treats "%" as interpolation syntax, so
+# percent-encoded credentials in DATABASE_URL must be escaped first.
+config.set_main_option("sqlalchemy.url", str(settings.database_url).replace("%", "%%"))
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.

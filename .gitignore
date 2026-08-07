@@ -1,0 +1,179 @@
+# ============================================
+# Python
+# ============================================
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Build / distribution
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+
+# ============================================
+# Virtual Environments
+# ============================================
+
+.venv/
+venv/
+env/
+ENV/
+
+
+# ============================================
+# Environment Variables / Secrets
+# ============================================
+
+.env
+.env.*
+!.env.example
+
+# Local secrets
+*.pem
+*.key
+
+
+# ============================================
+# Testing / Coverage
+# ============================================
+
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.tox/
+.nox/
+
+
+# ============================================
+# Type Checking / Linting / Formatting
+# ============================================
+
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+.pyright/
+.ruff_cache/
+
+# Optional formatter cache
+.black_cache/
+
+
+# ============================================
+# FastAPI / Uvicorn
+# ============================================
+
+*.log
+logs/
+
+
+# ============================================
+# Database
+# ============================================
+
+*.db
+*.sqlite
+*.sqlite3
+
+# Keep Alembic migrations!
+# Do NOT ignore:
+# alembic/
+# app/alembic/
+# migrations/
+
+
+# ============================================
+# IDE / Editors
+# ============================================
+
+.vscode/
+.idea/
+
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+
+
+# ============================================
+# Operating System
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+
+
+# ============================================
+# Docker
+# ============================================
+
+# Local Docker overrides, if they contain
+# developer-specific configuration
+compose.override.yml
+docker-compose.override.yml
+
+
+# ============================================
+# Temporary Files
+# ============================================
+
+tmp/
+temp/
+.tmp/
+.cache/
+
+
+# ============================================
+# Application-specific uploads
+# ============================================
+
+uploads/
+storage/
+
+
+# ============================================
+# Celery
+# ============================================
+
+celerybeat-schedule
+celerybeat.pid
+
+
+# ============================================
+# Jupyter
+# ============================================
+
+.ipynb_checkpoints/
