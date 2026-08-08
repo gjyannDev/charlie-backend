@@ -32,6 +32,13 @@ class AuthService:
         self.auth_rules = authRules
         self.event_dispatcher = authEventDispatcher
 
+    def _commit(self, db: Session) -> None:
+        try:
+            db.commit()
+        except Exception:
+            db.rollback()
+            raise
+
     def register(self, user: UserRegister, db: Session) -> User:
         existing_user = self.user_repository.get_by_email(db, user.email)
         if existing_user:
@@ -49,12 +56,13 @@ class AuthService:
             role=role,
             hashed_password=self.password_service.hash(user.password),
         )
-        new_user_id = new_user.id
-        if new_user_id is None:
+        if new_user.id is None:
             raise HTTPException(status_code=500, detail="User creation failed")
+
+        self._commit(db)
         self.event_dispatcher.dispatch(
             UserRegistered(
-                user_id=new_user_id,
+                user_id=new_user.id,
                 email=new_user.email,
                 role=new_user.role.value,
             )
@@ -88,20 +96,13 @@ class AuthService:
             expires_delta=refresh_expires,
         )
 
-        self.token_service.store_token(
-            db,
-            token=access_token,
-            user_id=db_user_id,
-            expires_delta=access_expires,
-            is_refresh=False,
-        )
-        self.token_service.store_token(
+        self.token_service.store_refresh_token(
             db,
             token=refresh_token,
             user_id=db_user_id,
             expires_delta=refresh_expires,
-            is_refresh=True,
         )
+        self._commit(db)
 
         self.event_dispatcher.dispatch(
             UserLoggedIn(user_id=db_user_id, email=db_user_email)
@@ -113,16 +114,19 @@ class AuthService:
         }
 
     def refresh(self, refresh_token: str, db: Session) -> dict[str, str | None]:
-        payload = self.token_service.verify_token(refresh_token, db, is_refresh=True)
+        payload = self.token_service.verify_refresh_token(refresh_token, db)
         user_id = payload["user_id"]
         email = payload["email"]
 
         db_user = self.user_repository.get_by_id(db, int(user_id))
+
         if not db_user:
             raise HTTPException(status_code=401, detail="User not found")
         db_user_id = db_user.id
+
         if db_user_id is None:
             raise HTTPException(status_code=500, detail="User record is invalid")
+
         db_user_email = db_user.email
         db_user_role = db_user.role.value
 
@@ -132,14 +136,6 @@ class AuthService:
             user_id=db_user_id,
             role=db_user_role,
             expires_delta=access_expires,
-        )
-
-        self.token_service.store_token(
-            db,
-            token=new_access_token,
-            user_id=db_user_id,
-            expires_delta=access_expires,
-            is_refresh=False,
         )
 
         self.event_dispatcher.dispatch(
@@ -152,13 +148,12 @@ class AuthService:
         }
 
     def logout(self, refresh_token: str, db: Session) -> dict[str, str]:
-        db_token = self.token_repository.get_by_token(
-            db, refresh_token, is_refresh=True
-        )
+        db_token = self.token_repository.get_by_token(db, refresh_token)
         if not db_token:
             raise HTTPException(status_code=400, detail="Invalid refresh token")
 
         self.token_repository.revoke(db, db_token)
+        self._commit(db)
         self.event_dispatcher.dispatch(
             UserLoggedOut(user_id=db_token.user_id, token_id=db_token.id)
         )

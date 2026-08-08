@@ -31,7 +31,7 @@ class UserRepository:
             hashed_password=hashed_password,
         )
         db.add(user)
-        db.commit()
+        db.flush()
         db.refresh(user)
         return user
 

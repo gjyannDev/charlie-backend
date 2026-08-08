@@ -20,7 +20,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.login_url)
 
 class TokenPayload(TypedDict):
     email: str
-    exp: datetime
+    exp: int
     user_id: int
     role: str | None
     permissions: list[str]
@@ -79,7 +79,7 @@ class TokenService:
             )
             return {
                 "email": str(payload["email"]),
-                "exp": payload["exp"],
+                "exp": int(payload["exp"]),
                 "user_id": int(payload["user_id"]),
                 "role": payload.get("role"),
                 "permissions": list(payload.get("permissions", [])),
@@ -89,6 +89,50 @@ class TokenService:
         except JWTError as exc:
             raise HTTPException(status_code=401, detail="Invalid token") from exc
 
+    def store_refresh_token(
+        self,
+        db: Session,
+        token: str,
+        user_id: int,
+        expires_delta: timedelta,
+    ) -> Token:
+        expire_time = datetime.now(UTC) + expires_delta
+        return self.token_repository.create(
+            db,
+            token=token,
+            user_id=user_id,
+            expired_at=expire_time,
+        )
+
+    def verify_refresh_token(self, token: str, db: Session) -> TokenPayload:
+        payload = self.decode_token(token)
+        db_token = self.token_repository.get_by_token(db, token)
+        if not db_token:
+            raise HTTPException(status_code=401, detail="Invalid refresh token")
+        if db_token.is_revoked:
+            raise HTTPException(status_code=401, detail="Refresh token revoked")
+        if self._is_expired(db_token.expired_at):
+            raise HTTPException(status_code=498, detail="Refresh token expired")
+        return payload
+
+    def _is_expired(self, expired_at: datetime) -> bool:
+        now = datetime.now(UTC)
+        if expired_at.tzinfo is None:
+            return expired_at <= now.replace(tzinfo=None)
+        return expired_at <= now
+
+    def get_current_user(self, token: str, db: Session) -> User:
+        payload = self.decode_token(token)
+        user = self.user_repository.get_by_id(db, int(payload["user_id"]))
+        if not user:
+            raise HTTPException(status_code=401, detail="User not found")
+        return user
+
+    def verify_token(self, token: str, db: Session, is_refresh: bool = False) -> TokenPayload:
+        if is_refresh:
+            return self.verify_refresh_token(token, db)
+        return self.decode_token(token)
+
     def store_token(
         self,
         db: Session,
@@ -97,33 +141,9 @@ class TokenService:
         expires_delta: timedelta,
         is_refresh: bool = False,
     ) -> Token:
-        expire_time = datetime.now(UTC) + expires_delta
-        return self.token_repository.create(
-            db,
-            token=token,
-            user_id=user_id,
-            expired_at=expire_time,
-            is_refresh=is_refresh,
-        )
-
-    def verify_token(
-        self, token: str, db: Session, is_refresh: bool = False
-    ) -> TokenPayload:
-        payload = self.decode_token(token)
-
-        db_token = self.token_repository.get_by_token(db, token, is_refresh=is_refresh)
-        if not db_token or db_token.is_revoked:
-            raise HTTPException(status_code=401, detail="Token revoked or invalid")
-
-        return payload
-
-    def get_current_user(self, token: str, db: Session) -> User:
-        payload = self.verify_token(token, db, is_refresh=False)
-        user_id = payload["user_id"]
-        user = self.user_repository.get_by_id(db, int(user_id))
-        if not user:
-            raise HTTPException(status_code=401, detail="User not found")
-        return user
+        if not is_refresh:
+            raise ValueError("Access tokens are not persisted")
+        return self.store_refresh_token(db, token, user_id, expires_delta)
 
 
 tokenService = TokenService()

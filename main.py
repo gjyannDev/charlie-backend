@@ -2,16 +2,12 @@
 main.py - FastAPI application entry point.
 """
 
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI, Request, status
 from fastapi.exceptions import RequestValidationError as FastAPIValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from sqlalchemy.exc import ProgrammingError
 
 from app.core.config import settings
-from app.core.database import Base, engine
 from app.core.logging_config import get_logger
 from app.middleware.exception_logging import ExceptionLoggingMiddleware
 from app.modules.auth.Routes import auth_router
@@ -56,19 +52,6 @@ async def validation_exception_handler(request: Request, exc: FastAPIValidationE
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={"detail": exc.errors()},
     )
-
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    try:
-        Base.metadata.create_all(bind=engine)
-        logger.info("Database tables created successfully")
-    except ProgrammingError as exc:
-        logger.error(f"Error creating tables: {exc}")
-    yield
-
-
-app.router.lifespan_context = lifespan
 
 
 if __name__ == "__main__":

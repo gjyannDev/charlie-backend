@@ -1,10 +1,13 @@
+from datetime import UTC, datetime, timedelta
+
+from app.models.user import Token
 from app.modules.auth.Domain.Enums import UserRole
 from app.modules.auth.Domain.Events import UserRegistered
 from app.modules.auth.Domain.Rules import authRules
 from app.modules.auth.Listeners import authEventDispatcher
 
 
-def test_register_and_login_flow(client):
+def test_register_and_login_flow(client, db_session):
     register_response = client.post(
         "/auth/register",
         json={
@@ -26,6 +29,10 @@ def test_register_and_login_flow(client):
     assert payload["access_token"]
     assert payload["refresh_token"]
     assert payload["token_type"] == "bearer"
+
+    token_rows = db_session.query(Token).all()
+    assert len(token_rows) == 1
+    assert token_rows[0].token == payload["refresh_token"]
 
     me_response = client.get(
         "/auth/me",
@@ -51,14 +58,67 @@ def test_refresh_and_logout_flow(client):
     )
     refresh_token = login_response.json()["refresh_token"]
 
-    refresh_response = client.post("/auth/refresh", params={"refresh_token": refresh_token})
+    refresh_response = client.post(
+        "/auth/refresh",
+        json={"refresh_token": refresh_token},
+    )
     assert refresh_response.status_code == 200
     assert refresh_response.json()["access_token"]
     assert refresh_response.json()["refresh_token"] is None
 
-    logout_response = client.post("/auth/logout", params={"refresh_token": refresh_token})
+    logout_response = client.post(
+        "/auth/logout",
+        json={"refresh_token": refresh_token},
+    )
     assert logout_response.status_code == 200
     assert logout_response.json()["message"] == "Refresh token revoked successfully"
+
+    post_logout_refresh = client.post(
+        "/auth/refresh",
+        json={"refresh_token": refresh_token},
+    )
+    assert post_logout_refresh.status_code == 401
+
+
+def test_refresh_token_expiry_is_enforced(client, db_session):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "expired@example.com",
+            "full_name": "Expired User",
+            "password": "secret123",
+            "role": "user",
+        },
+    )
+    login_response = client.post(
+        "/auth/login",
+        json={"email": "expired@example.com", "password": "secret123"},
+    )
+    refresh_token = login_response.json()["refresh_token"]
+
+    db_token = db_session.query(Token).filter(Token.token == refresh_token).one()
+    db_token.expired_at = datetime.now(UTC) - timedelta(minutes=5)
+    db_session.commit()
+
+    expired_response = client.post(
+        "/auth/refresh",
+        json={"refresh_token": refresh_token},
+    )
+    assert expired_response.status_code == 498
+
+
+def test_refresh_and_logout_reject_query_params(client):
+    refresh_response = client.post(
+        "/auth/refresh",
+        params={"refresh_token": "not-used"},
+    )
+    assert refresh_response.status_code == 422
+
+    logout_response = client.post(
+        "/auth/logout",
+        params={"refresh_token": "not-used"},
+    )
+    assert logout_response.status_code == 422
 
 
 def test_admin_endpoint_requires_admin_role(client):

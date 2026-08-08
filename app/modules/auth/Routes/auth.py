@@ -12,6 +12,7 @@ from app.modules.auth.Controllers import authController
 from app.modules.auth.Domain.Enums import UserRole
 from app.modules.auth.Schemas import (
     MeSchema,
+    RefreshTokenRequest,
     TokenResponse,
     UserLogin,
     UserRegister,
@@ -33,13 +34,13 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 
 
 @auth_router.post("/refresh", response_model=TokenResponse)
-def refresh_token(refresh_token: str, db: Session = Depends(get_db)):
-    return authController.refresh(refresh_token, db)
+def refresh_token(refresh_token: RefreshTokenRequest, db: Session = Depends(get_db)):
+    return authController.refresh(refresh_token.refresh_token, db)
 
 
 @auth_router.post("/logout")
-def logout(refresh_token: str, db: Session = Depends(get_db)):
-    return authController.logout(refresh_token, db)
+def logout(refresh_token: RefreshTokenRequest, db: Session = Depends(get_db)):
+    return authController.logout(refresh_token.refresh_token, db)
 
 
 @auth_router.get("/me", response_model=MeSchema)

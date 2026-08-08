@@ -23,6 +23,12 @@ class UserLogin(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str
+
+    model_config = ConfigDict(from_attributes=True)
+
+
 class UserResponse(BaseModel):
     id: int
     email: EmailStr

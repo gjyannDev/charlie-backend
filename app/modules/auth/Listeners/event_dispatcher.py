@@ -13,7 +13,7 @@ from app.modules.auth.Domain.Events import (
 )
 from app.modules.auth.Listeners.auth_event_listener import authEventListener
 
-AuthEventHandler = Callable[[AuthEvent], None]
+AuthEventHandler = Callable[..., None]
 
 
 class AuthEventDispatcher:
