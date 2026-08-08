@@ -1,0 +1,428 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "charlie-backend",
+    "description": "FastAPI backend with JWT authentication, role-based access control, SQLAlchemy persistence, and auth event logging.",
+    "root": "charlie-backend"
+  },
+  "nodes": [
+    {
+      "id": "file:main.py",
+      "type": "file",
+      "name": "main.py",
+      "filePath": "main.py",
+      "summary": "FastAPI application entry point. Creates the app, includes the auth router, configures CORS and exception handlers.",
+      "tags": ["fastapi", "entrypoint", "routing"]
+    },
+    {
+      "id": "file:app/core/config.py",
+      "type": "file",
+      "name": "config.py",
+      "filePath": "app/core/config.py",
+      "summary": "Central settings object for database, JWT, and app metadata loaded from environment variables.",
+      "tags": ["config", "jwt", "database"]
+    },
+    {
+      "id": "file:app/core/database.py",
+      "type": "file",
+      "name": "database.py",
+      "filePath": "app/core/database.py",
+      "summary": "SQLAlchemy engine, session factory, and FastAPI database dependency.",
+      "tags": ["database", "sqlalchemy", "dependency"]
+    },
+    {
+      "id": "file:app/dependencies.py",
+      "type": "file",
+      "name": "dependencies.py",
+      "filePath": "app/dependencies.py",
+      "summary": "Reusable FastAPI dependency for enforcing role-based access control.",
+      "tags": ["auth", "rbac", "dependency"]
+    },
+    {
+      "id": "file:app/models/user.py",
+      "type": "file",
+      "name": "user.py",
+      "filePath": "app/models/user.py",
+      "summary": "SQLAlchemy User and Token models backing auth identity and refresh-token persistence.",
+      "tags": ["sqlalchemy", "model", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Routes/auth.py",
+      "type": "file",
+      "name": "auth.py",
+      "filePath": "app/modules/auth/Routes/auth.py",
+      "summary": "HTTP surface for register, login, refresh, logout, me, and role-protected endpoints.",
+      "tags": ["fastapi", "routes", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Controllers/auth_controller.py",
+      "type": "file",
+      "name": "auth_controller.py",
+      "filePath": "app/modules/auth/Controllers/auth_controller.py",
+      "summary": "Thin HTTP controller that forwards requests into the auth service.",
+      "tags": ["controller", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Services/auth_service.py",
+      "type": "file",
+      "name": "auth_service.py",
+      "filePath": "app/modules/auth/Services/auth_service.py",
+      "summary": "Auth use-case service for registration, login, refresh, logout, me, and role message responses.",
+      "tags": ["service", "jwt", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Services/token_service.py",
+      "type": "file",
+      "name": "token_service.py",
+      "filePath": "app/modules/auth/Services/token_service.py",
+      "summary": "JWT creation, decoding, current-user lookup, and refresh-token validation/storage.",
+      "tags": ["jwt", "token", "security"]
+    },
+    {
+      "id": "file:app/modules/auth/Services/password_service.py",
+      "type": "file",
+      "name": "password_service.py",
+      "filePath": "app/modules/auth/Services/password_service.py",
+      "summary": "Argon2 password hashing and verification wrapper.",
+      "tags": ["security", "password", "hashing"]
+    },
+    {
+      "id": "file:app/modules/auth/Repository/user_repository.py",
+      "type": "file",
+      "name": "user_repository.py",
+      "filePath": "app/modules/auth/Repository/user_repository.py",
+      "summary": "User persistence helpers for lookup and creation.",
+      "tags": ["repository", "database", "user"]
+    },
+    {
+      "id": "file:app/modules/auth/Repository/token_repository.py",
+      "type": "file",
+      "name": "token_repository.py",
+      "filePath": "app/modules/auth/Repository/token_repository.py",
+      "summary": "Refresh-token persistence helpers for create, lookup, and revoke.",
+      "tags": ["repository", "database", "token"]
+    },
+    {
+      "id": "file:app/modules/auth/Domain/Enums/user_role.py",
+      "type": "file",
+      "name": "user_role.py",
+      "filePath": "app/modules/auth/Domain/Enums/user_role.py",
+      "summary": "Canonical auth role enum shared by schemas, rules, and models.",
+      "tags": ["enum", "role", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Domain/Rules/auth_rules.py",
+      "type": "file",
+      "name": "auth_rules.py",
+      "filePath": "app/modules/auth/Domain/Rules/auth_rules.py",
+      "summary": "Pure domain validation for parsing and checking allowed roles.",
+      "tags": ["domain", "validation", "rbac"]
+    },
+    {
+      "id": "file:app/modules/auth/Domain/Events/auth_events.py",
+      "type": "file",
+      "name": "auth_events.py",
+      "filePath": "app/modules/auth/Domain/Events/auth_events.py",
+      "summary": "Domain events emitted after register, login, refresh, and logout.",
+      "tags": ["domain-event", "auth", "logging"]
+    },
+    {
+      "id": "file:app/modules/auth/Listeners/event_dispatcher.py",
+      "type": "file",
+      "name": "event_dispatcher.py",
+      "filePath": "app/modules/auth/Listeners/event_dispatcher.py",
+      "summary": "In-process dispatcher that routes auth events to listeners.",
+      "tags": ["events", "dispatcher", "auth"]
+    },
+    {
+      "id": "file:app/modules/auth/Listeners/auth_event_listener.py",
+      "type": "file",
+      "name": "auth_event_listener.py",
+      "filePath": "app/modules/auth/Listeners/auth_event_listener.py",
+      "summary": "Auth event listener that logs user registration, login, refresh, and logout events.",
+      "tags": ["events", "logging", "listener"]
+    },
+    {
+      "id": "file:app/modules/auth/Schemas/user.py",
+      "type": "file",
+      "name": "user.py",
+      "filePath": "app/modules/auth/Schemas/user.py",
+      "summary": "Pydantic request and response schemas for auth endpoints.",
+      "tags": ["schema", "pydantic", "auth"]
+    },
+    {
+      "id": "file:tests/conftest.py",
+      "type": "file",
+      "name": "conftest.py",
+      "filePath": "tests/conftest.py",
+      "summary": "Test database setup and FastAPI dependency override for isolated auth tests.",
+      "tags": ["tests", "fixture", "database"]
+    },
+    {
+      "id": "file:tests/test_auth.py",
+      "type": "file",
+      "name": "test_auth.py",
+      "filePath": "tests/test_auth.py",
+      "summary": "End-to-end and unit tests for register, login, refresh, logout, RBAC, rules, and event dispatching.",
+      "tags": ["tests", "auth", "coverage"]
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Project overview describing the FastAPI backend and its major capabilities.",
+      "tags": ["documentation", "overview"]
+    },
+    {
+      "id": "document:docs/backend-auth-implementation-review.md",
+      "type": "document",
+      "name": "backend-auth-implementation-review.md",
+      "filePath": "docs/backend-auth-implementation-review.md",
+      "summary": "Design note explaining the auth cleanup, migration alignment, and expected token lifecycle.",
+      "tags": ["documentation", "auth", "review"]
+    },
+    {
+      "id": "file:migrations/versions/65827262450c_init_db.py",
+      "type": "file",
+      "name": "65827262450c_init_db.py",
+      "filePath": "migrations/versions/65827262450c_init_db.py",
+      "summary": "Initial Alembic revision that establishes the migration chain.",
+      "tags": ["migration", "alembic"]
+    },
+    {
+      "id": "file:migrations/versions/c82632d6b4af_create_user_and_token_table.py",
+      "type": "file",
+      "name": "c82632d6b4af_create_user_and_token_table.py",
+      "filePath": "migrations/versions/c82632d6b4af_create_user_and_token_table.py",
+      "summary": "Creates the users and tokens tables used by auth.",
+      "tags": ["migration", "users", "tokens"]
+    },
+    {
+      "id": "file:migrations/versions/a3f1e8d9c4b2_auth_session_cleanup.py",
+      "type": "file",
+      "name": "a3f1e8d9c4b2_auth_session_cleanup.py",
+      "filePath": "migrations/versions/a3f1e8d9c4b2_auth_session_cleanup.py",
+      "summary": "Cleans up auth session schema by removing the obsolete refresh discriminator and tightening defaults.",
+      "tags": ["migration", "auth", "cleanup"]
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:main.py",
+      "target": "file:app/modules/auth/Routes/auth.py",
+      "type": "imports",
+      "summary": "Main application includes the auth router."
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:app/core/config.py",
+      "type": "imports",
+      "summary": "App metadata and middleware configuration come from settings."
+    },
+    {
+      "source": "file:main.py",
+      "target": "file:app/core/database.py",
+      "type": "imports",
+      "summary": "App startup relies on shared database session wiring indirectly through the router stack."
+    },
+    {
+      "source": "file:app/modules/auth/Routes/auth.py",
+      "target": "file:app/modules/auth/Controllers/auth_controller.py",
+      "type": "calls",
+      "summary": "Route handlers forward requests to the controller."
+    },
+    {
+      "source": "file:app/modules/auth/Routes/auth.py",
+      "target": "file:app/dependencies.py",
+      "type": "imports",
+      "summary": "Role-protected routes use the shared RBAC dependency."
+    },
+    {
+      "source": "file:app/modules/auth/Routes/auth.py",
+      "target": "file:app/modules/auth/Services/token_service.py",
+      "type": "imports",
+      "summary": "/auth/me uses the current-user dependency from token service."
+    },
+    {
+      "source": "file:app/dependencies.py",
+      "target": "file:app/modules/auth/Services/token_service.py",
+      "type": "calls",
+      "summary": "RBAC dependency resolves the current user through token validation."
+    },
+    {
+      "source": "file:app/dependencies.py",
+      "target": "file:app/modules/auth/Domain/Rules/auth_rules.py",
+      "type": "imports",
+      "summary": "RBAC dependency delegates role parsing and permission checks to domain rules."
+    },
+    {
+      "source": "file:app/modules/auth/Controllers/auth_controller.py",
+      "target": "file:app/modules/auth/Services/auth_service.py",
+      "type": "calls",
+      "summary": "Controller delegates all use cases to the auth service."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Repository/user_repository.py",
+      "type": "calls",
+      "summary": "Registration and login load or create users through the repository."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Repository/token_repository.py",
+      "type": "calls",
+      "summary": "Login, refresh, and logout persist or revoke refresh tokens through the repository."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Services/password_service.py",
+      "type": "calls",
+      "summary": "Registration hashes passwords and login verifies them."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Services/token_service.py",
+      "type": "calls",
+      "summary": "Service uses token helpers to mint access and refresh tokens and verify refresh tokens."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Domain/Rules/auth_rules.py",
+      "type": "calls",
+      "summary": "Registration parses the requested role and role endpoints reuse domain role checks."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/modules/auth/Listeners/event_dispatcher.py",
+      "type": "calls",
+      "summary": "Service emits auth domain events after each use case."
+    },
+    {
+      "source": "file:app/modules/auth/Services/auth_service.py",
+      "target": "file:app/core/config.py",
+      "type": "imports",
+      "summary": "Access and refresh expiration windows come from settings."
+    },
+    {
+      "source": "file:app/modules/auth/Services/token_service.py",
+      "target": "file:app/modules/auth/Repository/token_repository.py",
+      "type": "calls",
+      "summary": "Refresh-token validation and persistence use token repository primitives."
+    },
+    {
+      "source": "file:app/modules/auth/Services/token_service.py",
+      "target": "file:app/modules/auth/Repository/user_repository.py",
+      "type": "calls",
+      "summary": "Current-user resolution loads the user row by ID."
+    },
+    {
+      "source": "file:app/modules/auth/Services/token_service.py",
+      "target": "file:app/core/config.py",
+      "type": "imports",
+      "summary": "JWT signing and expiry windows use application settings."
+    },
+    {
+      "source": "file:app/modules/auth/Services/token_service.py",
+      "target": "file:app/core/database.py",
+      "type": "imports",
+      "summary": "The public get_current_user dependency resolves a DB session through get_db."
+    },
+    {
+      "source": "file:app/modules/auth/Services/password_service.py",
+      "target": "file:app/modules/auth/Repository/user_repository.py",
+      "type": "related",
+      "summary": "Password hashing feeds user persistence during registration."
+    },
+    {
+      "source": "file:app/modules/auth/Repository/user_repository.py",
+      "target": "file:app/models/user.py",
+      "type": "imports",
+      "summary": "User repository persists and queries the User ORM model."
+    },
+    {
+      "source": "file:app/modules/auth/Repository/token_repository.py",
+      "target": "file:app/models/user.py",
+      "type": "imports",
+      "summary": "Token repository persists and queries the Token ORM model."
+    },
+    {
+      "source": "file:app/modules/auth/Domain/Rules/auth_rules.py",
+      "target": "file:app/modules/auth/Domain/Enums/user_role.py",
+      "type": "imports",
+      "summary": "Role validation is based on the shared enum."
+    },
+    {
+      "source": "file:app/models/user.py",
+      "target": "file:app/modules/auth/Domain/Enums/user_role.py",
+      "type": "imports",
+      "summary": "The ORM role column stores the canonical enum."
+    },
+    {
+      "source": "file:app/modules/auth/Domain/Events/auth_events.py",
+      "target": "file:app/modules/auth/Listeners/event_dispatcher.py",
+      "type": "imports",
+      "summary": "Auth events are the dispatcher payloads."
+    },
+    {
+      "source": "file:app/modules/auth/Listeners/event_dispatcher.py",
+      "target": "file:app/modules/auth/Listeners/auth_event_listener.py",
+      "type": "calls",
+      "summary": "Dispatcher routes each event to the logging listener."
+    },
+    {
+      "source": "file:app/modules/auth/Listeners/auth_event_listener.py",
+      "target": "document:docs/backend-auth-implementation-review.md",
+      "type": "documents",
+      "summary": "The implementation review explains the event and token lifecycle this listener observes."
+    },
+    {
+      "source": "file:tests/test_auth.py",
+      "target": "file:app/modules/auth/Routes/auth.py",
+      "type": "tested_by",
+      "summary": "End-to-end tests exercise register/login/refresh/logout/me and role-protected routes."
+    },
+    {
+      "source": "file:tests/test_auth.py",
+      "target": "file:app/modules/auth/Domain/Rules/auth_rules.py",
+      "type": "tested_by",
+      "summary": "Unit tests validate role parsing and invalid-role rejection."
+    },
+    {
+      "source": "file:tests/test_auth.py",
+      "target": "file:app/modules/auth/Listeners/event_dispatcher.py",
+      "type": "tested_by",
+      "summary": "Tests confirm auth events dispatch to registered listeners."
+    },
+    {
+      "source": "file:tests/conftest.py",
+      "target": "file:app/core/database.py",
+      "type": "configures",
+      "summary": "Tests override the database dependency with an in-memory SQLite session."
+    },
+    {
+      "source": "file:migrations/versions/c82632d6b4af_create_user_and_token_table.py",
+      "target": "file:app/models/user.py",
+      "type": "migrates",
+      "summary": "Migration creates the tables modeled by the ORM."
+    },
+    {
+      "source": "file:migrations/versions/a3f1e8d9c4b2_auth_session_cleanup.py",
+      "target": "file:app/models/user.py",
+      "type": "migrates",
+      "summary": "Migration aligns the schema with the cleaned-up auth models."
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:main.py",
+      "type": "documents",
+      "summary": "Project README describes the backend at a high level."
+    },
+    {
+      "source": "document:docs/backend-auth-implementation-review.md",
+      "target": "file:app/modules/auth/Services/auth_service.py",
+      "type": "documents",
+      "summary": "Review notes describe the register/login/refresh/logout sequence in the service."
+    }
+  ]
+}

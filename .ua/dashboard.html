@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charlie Graph Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --panel: rgba(10, 18, 35, 0.9);
+      --panel-2: rgba(16, 26, 48, 0.92);
+      --border: rgba(161, 181, 255, 0.14);
+      --text: #edf2ff;
+      --muted: #8da0c8;
+      --accent: #77d7ff;
+      --accent-2: #a78bfa;
+      --good: #5eead4;
+      --warn: #fbbf24;
+      --shadow: 0 26px 90px rgba(0, 0, 0, 0.34);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(119, 215, 255, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.18), transparent 26%),
+        linear-gradient(160deg, #050a14 0%, #091324 52%, #060910 100%);
+      color: var(--text);
+    }
+
+    .app {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 1rem;
+      min-height: 100vh;
+      padding: 1rem;
+    }
+
+    .hero, .summary, .frame, .section {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero {
+      border-radius: 24px;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.6vw, 2.3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .sub {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.82rem;
+      background: rgba(119, 215, 255, 0.1);
+      border: 1px solid rgba(119, 215, 255, 0.18);
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .dot {
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 50%;
+      background: var(--good);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.45); }
+      70% { box-shadow: 0 0 0 12px rgba(94, 234, 212, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(94, 234, 212, 0); }
+    }
+
+    .summary {
+      border-radius: 20px;
+      padding: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .metric {
+      border-radius: 16px;
+      padding: 0.8rem 0.9rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .metric label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .metric strong {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .frame {
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: 300px minmax(0, 1fr) 360px;
+      overflow: hidden;
+      min-height: calc(100vh - 15rem);
+    }
+
+    .sidebar, .main, .details {
+      padding: 1rem;
+    }
+
+    .sidebar, .details {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .main {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 0.9rem;
+    }
+
+    .section {
+      border-radius: 18px;
+      padding: 0.9rem;
+    }
+
+    .section h2, .sidebar h2, .details h2 {
+      margin: 0 0 0.75rem;
+      font-size: 0.98rem;
+      letter-spacing: -0.02em;
+    }
+
+    .control {
+      display: grid;
+      gap: 0.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .control label {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .control input, .control select {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(3, 7, 18, 0.78);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 0.75rem 0.85rem;
+      outline: none;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .chip {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 0.4rem 0.7rem;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.82rem;
+    }
+
+    .chip.active {
+      color: var(--text);
+      border-color: rgba(119, 215, 255, 0.4);
+      background: rgba(119, 215, 255, 0.1);
+    }
+
+    .list {
+      display: grid;
+      gap: 0.6rem;
+      max-height: 52vh;
+      overflow: auto;
+      padding-right: 0.2rem;
+    }
+
+    .node-card {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.8rem 0.85rem;
+      cursor: pointer;
+    }
+
+    .node-card.selected {
+      border-color: rgba(119, 215, 255, 0.35);
+      background: rgba(119, 215, 255, 0.08);
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .node-card h3 {
+      margin: 0;
+      font-size: 0.94rem;
+    }
+
+    .node-card p {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      background: rgba(167, 139, 250, 0.12);
+      color: #d8c8ff;
+      border: 1px solid rgba(167, 139, 250, 0.16);
+      white-space: nowrap;
+    }
+
+    .badge.file { background: rgba(119, 215, 255, 0.12); color: #cbf4ff; }
+    .badge.document { background: rgba(94, 234, 212, 0.12); color: #c8fff7; }
+    .badge.config { background: rgba(251, 191, 36, 0.12); color: #ffe7aa; }
+
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    .detail {
+      margin-bottom: 0.9rem;
+    }
+
+    .detail .label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .detail .value {
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .edge-list, .layer-list, .tour-list {
+      display: grid;
+      gap: 0.55rem;
+      max-height: 28vh;
+      overflow: auto;
+      padding-right: 0.2rem;
+    }
+
+    .edge-item, .layer-item, .tour-item {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 14px;
+      padding: 0.75rem 0.8rem;
+    }
+
+    .edge-item small, .layer-item small, .tour-item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .empty {
+      color: var(--muted);
+      padding: 0.8rem;
+      border: 1px dashed rgba(255, 255, 255, 0.09);
+      border-radius: 14px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: flex-end;
+    }
+
+    .refresh {
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1100px) {
+      .frame { grid-template-columns: 1fr; }
+      .main {
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 720px) {
+      .app { padding: 0.75rem; }
+      .hero { flex-direction: column; align-items: flex-start; }
+      .summary { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div>
+        <div class="pill"><span class="dot"></span> Live knowledge graph viewer</div>
+        <h1>Charlie Graph Dashboard</h1>
+        <p class="sub">Inspect nodes, edges, layers, and the guided tour from the generated graph file.</p>
+      </div>
+      <div class="header-actions">
+        <button class="refresh" id="refreshBtn" type="button">Refresh</button>
+        <div class="pill code" id="sourcePath">Loading…</div>
+      </div>
+    </header>
+
+    <section class="summary" id="summary"></section>
+
+    <main class="frame">
+      <aside class="sidebar">
+        <h2>Explorer</h2>
+        <div class="control">
+          <label for="search">Search</label>
+          <input id="search" type="search" placeholder="Search names, summaries, paths, or tags" />
+        </div>
+        <div class="control">
+          <label for="layerFilter">Layer filter</label>
+          <select id="layerFilter">
+            <option value="">All layers</option>
+          </select>
+        </div>
+        <div class="control">
+          <label>Types</label>
+          <div class="chips" id="typeChips"></div>
+        </div>
+        <h2>Nodes</h2>
+        <div class="list" id="nodeList"></div>
+      </aside>
+
+      <section class="main">
+        <div class="section">
+          <h2>Selected Node</h2>
+          <div id="selectedNode"></div>
+        </div>
+        <div class="section">
+          <h2>Connected Edges</h2>
+          <div class="edge-list" id="connectedEdges"></div>
+        </div>
+        <div class="section">
+          <h2>Layer Map</h2>
+          <div class="layer-list" id="layerList"></div>
+        </div>
+      </section>
+
+      <aside class="details">
+        <div class="section">
+          <h2>Tour Steps</h2>
+          <div class="tour-list" id="tourList"></div>
+        </div>
+        <div class="section">
+          <h2>How to use</h2>
+          <div class="detail">
+            <div class="label">Focus</div>
+            <div class="value">Use the search box to narrow the graph to a subsystem like auth, or click a node to inspect its connected edges.</div>
+          </div>
+          <div class="detail">
+            <div class="label">Data source</div>
+            <div class="value code">/.ua/knowledge-graph.json</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script>
+    const state = {
+      graph: null,
+      stats: null,
+      selectedNodeId: null,
+      search: "",
+      typeFilter: "",
+      layerFilter: "",
+    };
+
+    const els = {
+      summary: document.getElementById("summary"),
+      sourcePath: document.getElementById("sourcePath"),
+      search: document.getElementById("search"),
+      layerFilter: document.getElementById("layerFilter"),
+      typeChips: document.getElementById("typeChips"),
+      nodeList: document.getElementById("nodeList"),
+      selectedNode: document.getElementById("selectedNode"),
+      connectedEdges: document.getElementById("connectedEdges"),
+      layerList: document.getElementById("layerList"),
+      tourList: document.getElementById("tourList"),
+      refreshBtn: document.getElementById("refreshBtn"),
+    };
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function nodeLabel(node) {
+      return node.name || node.id;
+    }
+
+    function nodeLayer(nodeId) {
+      return (state.graph.layers || []).find((layer) => (layer.nodeIds || []).includes(nodeId));
+    }
+
+    function nodeMatches(node) {
+      const needle = state.search.trim().toLowerCase();
+      if (state.typeFilter && node.type !== state.typeFilter) return false;
+      if (state.layerFilter) {
+        const layer = nodeLayer(node.id);
+        if (!layer || layer.id !== state.layerFilter) return false;
+      }
+      if (!needle) return true;
+      return [node.id, node.name, node.summary, node.filePath, ...(node.tags || [])]
+        .filter(Boolean)
+        .some((part) => String(part).toLowerCase().includes(needle));
+    }
+
+    function filteredNodes() {
+      return (state.graph?.nodes || []).filter(nodeMatches);
+    }
+
+    function nodeById(id) {
+      return (state.graph?.nodes || []).find((node) => node.id === id);
+    }
+
+    function renderSummary() {
+      const project = state.graph.project || {};
+      const metrics = [
+        ["Project", project.name || "Unknown"],
+        ["Nodes", state.stats.totalNodes],
+        ["Edges", state.stats.totalEdges],
+        ["Layers / Tour", `${state.stats.totalLayers} / ${state.stats.tourSteps}`],
+      ];
+      els.summary.innerHTML = metrics.map(([label, value]) => `
+        <div class="metric">
+          <label>${escapeHtml(label)}</label>
+          <strong>${escapeHtml(value)}</strong>
+        </div>
+      `).join("");
+    }
+
+    function renderTypeChips() {
+      const types = Object.keys(state.stats.nodeTypes || {}).sort();
+      const chips = [
+        { label: "All", value: "" },
+        ...types.map((type) => ({ label: `${type} (${state.stats.nodeTypes[type]})`, value: type })),
+      ];
+      els.typeChips.innerHTML = chips.map((chip) => `
+        <button class="chip ${state.typeFilter === chip.value ? "active" : ""}" data-type="${escapeHtml(chip.value)}" type="button">
+          ${escapeHtml(chip.label)}
+        </button>
+      `).join("");
+      els.typeChips.querySelectorAll(".chip").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.typeFilter = button.dataset.type || "";
+          renderAll();
+        });
+      });
+    }
+
+    function renderLayerFilter() {
+      const layers = state.graph.layers || [];
+      els.layerFilter.innerHTML = [
+        '<option value="">All layers</option>',
+        ...layers.map((layer) => `<option value="${escapeHtml(layer.id)}">${escapeHtml(layer.name)} (${(layer.nodeIds || []).length})</option>`),
+      ].join("");
+      els.layerFilter.value = state.layerFilter;
+    }
+
+    function renderNodeList() {
+      const nodes = filteredNodes();
+      if (!nodes.length) {
+        els.nodeList.innerHTML = '<div class="empty">No nodes match the current filters.</div>';
+        return;
+      }
+      els.nodeList.innerHTML = nodes.map((node) => `
+        <article class="node-card ${state.selectedNodeId === node.id ? "selected" : ""}" data-node-id="${escapeHtml(node.id)}">
+          <div class="topline">
+            <h3>${escapeHtml(nodeLabel(node))}</h3>
+            <span class="badge ${escapeHtml(node.type)}">${escapeHtml(node.type)}</span>
+          </div>
+          <p>${escapeHtml(node.summary || "No summary available.")}</p>
+          <p class="code" style="margin-top:0.45rem; color: var(--muted)">${escapeHtml(node.filePath || node.id)}</p>
+        </article>
+      `).join("");
+      els.nodeList.querySelectorAll(".node-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          state.selectedNodeId = card.dataset.nodeId;
+          renderAll();
+        });
+      });
+    }
+
+    function renderSelectedNode() {
+      const node = nodeById(state.selectedNodeId) || filteredNodes()[0] || state.graph.nodes[0];
+      state.selectedNodeId = node ? node.id : null;
+      if (!node) {
+        els.selectedNode.innerHTML = '<div class="empty">No node selected.</div>';
+        els.connectedEdges.innerHTML = '<div class="empty">No edges available.</div>';
+        return;
+      }
+      const layer = nodeLayer(node.id);
+      const inbound = (state.graph.edges || []).filter((edge) => edge.target === node.id);
+      const outbound = (state.graph.edges || []).filter((edge) => edge.source === node.id);
+      els.selectedNode.innerHTML = `
+        <div class="detail">
+          <div class="label">ID</div>
+          <div class="value code">${escapeHtml(node.id)}</div>
+        </div>
+        <div class="detail">
+          <div class="label">Title</div>
+          <div class="value">${escapeHtml(nodeLabel(node))} <span class="badge ${escapeHtml(node.type)}" style="margin-left:0.45rem">${escapeHtml(node.type)}</span></div>
+        </div>
+        <div class="detail">
+          <div class="label">Summary</div>
+          <div class="value">${escapeHtml(node.summary || "No summary available.")}</div>
+        </div>
+        <div class="detail">
+          <div class="label">Path</div>
+          <div class="value code">${escapeHtml(node.filePath || "n/a")}</div>
+        </div>
+        <div class="detail">
+          <div class="label">Layer</div>
+          <div class="value">${escapeHtml(layer ? layer.name : "Unassigned")}</div>
+        </div>
+        <div class="detail">
+          <div class="label">Tags</div>
+          <div class="chips" style="margin-top:0.45rem">
+            ${(node.tags || []).length ? node.tags.map((tag) => `<span class="chip active">${escapeHtml(tag)}</span>`).join("") : '<span class="empty" style="display:inline-block; padding:0.4rem 0.6rem">No tags</span>'}
+          </div>
+        </div>
+      `;
+
+      const edges = [...outbound, ...inbound];
+      if (!edges.length) {
+        els.connectedEdges.innerHTML = '<div class="empty">No connected edges for this node.</div>';
+        return;
+      }
+      els.connectedEdges.innerHTML = edges.map((edge) => {
+        const source = nodeById(edge.source);
+        const target = nodeById(edge.target);
+        const sourceLabel = source ? nodeLabel(source) : edge.source;
+        const targetLabel = target ? nodeLabel(target) : edge.target;
+        return `
+          <div class="edge-item">
+            <div><strong>${escapeHtml(edge.type)}</strong> <span style="color: var(--muted)">(${escapeHtml(sourceLabel)} → ${escapeHtml(targetLabel)})</span></div>
+            <small>${escapeHtml(edge.summary || "No summary provided.")}</small>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderLayers() {
+      const layers = state.graph.layers || [];
+      if (!layers.length) {
+        els.layerList.innerHTML = '<div class="empty">No layers available in this graph.</div>';
+        return;
+      }
+      els.layerList.innerHTML = layers.map((layer) => `
+        <div class="layer-item">
+          <div><strong>${escapeHtml(layer.name)}</strong> <span style="color: var(--muted)">(${(layer.nodeIds || []).length} nodes)</span></div>
+          <small>${escapeHtml(layer.description || "No description available.")}</small>
+        </div>
+      `).join("");
+    }
+
+    function renderTour() {
+      const tour = state.graph.tour || [];
+      if (!tour.length) {
+        els.tourList.innerHTML = '<div class="empty">No tour steps available.</div>';
+        return;
+      }
+      els.tourList.innerHTML = tour.map((step) => `
+        <div class="tour-item">
+          <div><strong>${escapeHtml(step.order)}. ${escapeHtml(step.title)}</strong></div>
+          <small>${escapeHtml(step.description || "No description available.")}</small>
+        </div>
+      `).join("");
+    }
+
+    function renderAll() {
+      renderSummary();
+      renderTypeChips();
+      renderLayerFilter();
+      renderNodeList();
+      renderSelectedNode();
+      renderLayers();
+      renderTour();
+    }
+
+    async function loadGraph() {
+      els.sourcePath.textContent = "Loading graph…";
+      const response = await fetch("./knowledge-graph.json", { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Failed to load graph (${response.status})`);
+      }
+      state.graph = await response.json();
+      state.stats = {
+        totalNodes: (state.graph.nodes || []).length,
+        totalEdges: (state.graph.edges || []).length,
+        totalLayers: (state.graph.layers || []).length,
+        tourSteps: (state.graph.tour || []).length,
+        nodeTypes: (state.graph.nodes || []).reduce((acc, node) => {
+          acc[node.type] = (acc[node.type] || 0) + 1;
+          return acc;
+        }, {}),
+      };
+      state.selectedNodeId = (state.graph.nodes || [])[0]?.id || null;
+      els.sourcePath.textContent = "knowledge-graph.json";
+      renderAll();
+    }
+
+    els.search.addEventListener("input", (event) => {
+      state.search = event.target.value;
+      renderAll();
+    });
+
+    els.layerFilter.addEventListener("change", (event) => {
+      state.layerFilter = event.target.value;
+      renderAll();
+    });
+
+    els.refreshBtn.addEventListener("click", async () => {
+      try {
+        await loadGraph();
+      } catch (error) {
+        els.selectedNode.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      }
+    });
+
+    loadGraph().catch((error) => {
+      els.summary.innerHTML = `
+        <div class="metric">
+          <label>Error</label>
+          <strong>Viewer unavailable</strong>
+        </div>
+      `;
+      els.selectedNode.innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      els.connectedEdges.innerHTML = '<div class="empty">No graph data loaded.</div>';
+      els.layerList.innerHTML = '<div class="empty">No layers available.</div>';
+      els.tourList.innerHTML = '<div class="empty">No tour available.</div>';
+      els.sourcePath.textContent = "Graph load failed";
+    });
+  </script>
+</body>
+</html>
