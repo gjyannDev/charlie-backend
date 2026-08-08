@@ -3,6 +3,7 @@ Token and current-user services for the auth module.
 """
 
 from datetime import UTC, datetime, timedelta
+from typing import TypedDict
 
 from fastapi import Depends, HTTPException, Security
 from fastapi.security import OAuth2PasswordBearer
@@ -15,6 +16,14 @@ from app.models.user import Token, User
 from app.modules.auth.Repository import tokenRepository, userRepository
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl=settings.login_url)
+
+
+class TokenPayload(TypedDict):
+    email: str
+    exp: datetime
+    user_id: int
+    role: str | None
+    permissions: list[str]
 
 
 class TokenService:
@@ -61,13 +70,20 @@ class TokenService:
             payload, settings.jwt_secret_key, algorithm=settings.jwt_algorithm
         )
 
-    def decode_token(self, token: str) -> dict:
+    def decode_token(self, token: str) -> TokenPayload:
         try:
-            return jwt.decode(
+            payload = jwt.decode(
                 token,
                 settings.jwt_secret_key,
                 algorithms=[settings.jwt_algorithm],
             )
+            return {
+                "email": str(payload["email"]),
+                "exp": payload["exp"],
+                "user_id": int(payload["user_id"]),
+                "role": payload.get("role"),
+                "permissions": list(payload.get("permissions", [])),
+            }
         except ExpiredSignatureError as exc:
             raise HTTPException(status_code=498, detail="Token expired") from exc
         except JWTError as exc:
@@ -90,11 +106,10 @@ class TokenService:
             is_refresh=is_refresh,
         )
 
-    def verify_token(self, token: str, db: Session, is_refresh: bool = False) -> dict:
+    def verify_token(
+        self, token: str, db: Session, is_refresh: bool = False
+    ) -> TokenPayload:
         payload = self.decode_token(token)
-        user_id = payload.get("user_id")
-        if not user_id:
-            raise HTTPException(status_code=401, detail="Invalid token")
 
         db_token = self.token_repository.get_by_token(db, token, is_refresh=is_refresh)
         if not db_token or db_token.is_revoked:
@@ -104,7 +119,7 @@ class TokenService:
 
     def get_current_user(self, token: str, db: Session) -> User:
         payload = self.verify_token(token, db, is_refresh=False)
-        user_id = payload.get("user_id")
+        user_id = payload["user_id"]
         user = self.user_repository.get_by_id(db, int(user_id))
         if not user:
             raise HTTPException(status_code=401, detail="User not found")
