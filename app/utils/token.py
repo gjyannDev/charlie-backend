@@ -5,7 +5,8 @@ Compatibility wrappers for legacy token imports.
 from sqlalchemy.orm import Session
 
 from app.models.user import User
-from app.modules.auth.Services import get_current_user, oauth2_scheme, tokenService
+from app.modules.auth.Infrastructure.Security import tokenService
+from app.modules.auth.Interfaces.HTTP import get_current_user, oauth2_scheme
 
 
 def create_access_token(*args, **kwargs) -> str:

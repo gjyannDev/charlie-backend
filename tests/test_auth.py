@@ -1,13 +1,28 @@
 from datetime import UTC, datetime, timedelta
 
+from fastapi import HTTPException
+
 from app.models.user import Token
+from app.modules.auth.Application.Errors.auth_errors import (
+    EmailAlreadyRegisteredError,
+    InvalidCredentialsError,
+    InvalidRefreshTokenError,
+    InvalidRoleError,
+    InvalidUserStateError,
+    RefreshTokenRevokedError,
+    UserNotFoundError,
+)
+from app.modules.auth.Application.DTOs import AuthUseCaseResult
+from app.modules.auth.Application.Services import AuthApplicationService
 from app.modules.auth.Domain.Enums import UserRole
 from app.modules.auth.Domain.Events import UserRegistered
-from app.modules.auth.Controllers.auth_controller import AuthController
-from app.modules.auth.Domain.Rules import authRules
-from app.modules.auth.Listeners import authEventDispatcher
-from app.modules.auth.Listeners.event_dispatcher import AuthEventDispatcher
-from app.modules.auth.Services.auth_service import AuthUseCaseResult
+from app.modules.auth.Domain.Policies import rolePolicy
+from app.modules.auth.Infrastructure.Eventing import (
+    AuthEventDispatcher,
+    inProcessEventDispatcher,
+)
+from app.modules.auth.Interfaces.HTTP.auth_controller import AuthController
+from app.modules.auth.Interfaces.HTTP.error_mapper import map_auth_error
 
 
 def test_register_and_login_flow(client, db_session):
@@ -43,6 +58,22 @@ def test_register_and_login_flow(client, db_session):
     )
     assert me_response.status_code == 200
     assert me_response.json()["email"] == "user@example.com"
+
+
+def test_duplicate_register_maps_application_error_to_http(client):
+    payload = {
+        "email": "duplicate@example.com",
+        "full_name": "Duplicate User",
+        "password": "secret123",
+        "role": "user",
+    }
+
+    first_response = client.post("/auth/register", json=payload)
+    duplicate_response = client.post("/auth/register", json=payload)
+
+    assert first_response.status_code == 200
+    assert duplicate_response.status_code == 400
+    assert duplicate_response.json()["detail"] == "Email already registered"
 
 
 def test_refresh_and_logout_flow(client):
@@ -183,16 +214,36 @@ def test_users_routes_are_removed(client):
 
 
 def test_auth_rules_accept_string_role():
-    assert authRules.parse_user_role("admin") == UserRole.ADMIN
+    assert rolePolicy.parse_user_role("admin") == UserRole.ADMIN
 
 
 def test_auth_rules_reject_invalid_role():
     try:
-        authRules.parse_user_role("owner")
+        rolePolicy.parse_user_role("owner")
     except ValueError as exc:
         assert str(exc) == "Invalid role"
     else:
         raise AssertionError("Expected ValueError for invalid role")
+
+
+def test_auth_error_mapper_preserves_http_contract():
+    cases = [
+        (EmailAlreadyRegisteredError(), 400, "Email already registered"),
+        (InvalidCredentialsError(), 400, "Invalid credentials"),
+        (InvalidRoleError(), 400, "Invalid role"),
+        (InvalidRefreshTokenError(), 400, "Invalid refresh token"),
+        (RefreshTokenRevokedError(), 401, "Refresh token revoked"),
+        (UserNotFoundError(), 401, "User not found"),
+        (InvalidUserStateError(), 500, "User record is invalid"),
+        (InvalidUserStateError("User creation failed"), 500, "User creation failed"),
+    ]
+
+    for error, status_code, detail in cases:
+        http_error = map_auth_error(error)
+
+        assert isinstance(http_error, HTTPException)
+        assert http_error.status_code == status_code
+        assert http_error.detail == detail
 
 
 def test_auth_event_dispatcher_invokes_listener(monkeypatch):
@@ -202,12 +253,12 @@ def test_auth_event_dispatcher_invokes_listener(monkeypatch):
         calls.append(event.email)
 
     monkeypatch.setitem(
-        authEventDispatcher.listeners,
+        inProcessEventDispatcher.listeners,
         UserRegistered,
         (fake_listener,),
     )
 
-    authEventDispatcher.dispatch(
+    inProcessEventDispatcher.dispatch(
         UserRegistered(user_id=1, email="event@example.com", role="user")
     )
 
@@ -236,27 +287,12 @@ def test_auth_event_dispatcher_supports_multiple_listeners():
     ]
 
 
-def test_auth_controller_publishes_service_events(monkeypatch):
-    published = []
-
-    monkeypatch.setattr(
-        "app.modules.auth.Controllers.auth_controller.authEventDispatcher.dispatch",
-        lambda event: published.append((type(event).__name__, event.email)),
-    )
-
+def test_auth_controller_delegates_to_application_service():
     expected_value = object()
-    expected_event = UserRegistered(
-        user_id=1,
-        email="event@example.com",
-        role="user",
-    )
 
     class FakeAuthService:
         def register(self, user, db):
-            return AuthUseCaseResult(
-                value=expected_value,
-                events=(expected_event,),
-            )
+            return expected_value
 
     controller = AuthController()
     controller.auth_service = FakeAuthService()
@@ -264,4 +300,67 @@ def test_auth_controller_publishes_service_events(monkeypatch):
     result = controller.register(user=object(), db=object())
 
     assert result is expected_value
+
+
+def test_auth_application_service_publishes_use_case_events():
+    published = []
+    expected_value = object()
+    expected_event = UserRegistered(user_id=1, email="event@example.com", role="user")
+
+    class FakeUseCase:
+        def execute(self, *args):
+            return AuthUseCaseResult(value=expected_value, events=(expected_event,))
+
+    class FakeEventPublisher:
+        def dispatch(self, event):
+            published.append((type(event).__name__, event.email))
+
+    service = AuthApplicationService(
+        register_user=FakeUseCase(),
+        login_user=FakeUseCase(),
+        refresh_access_token=FakeUseCase(),
+        logout_user=FakeUseCase(),
+        get_current_profile=FakeUseCase(),
+        build_role_message_use_case=FakeUseCase(),
+        event_publisher=FakeEventPublisher(),
+    )
+
+    result = service.register(user=object(), db=object())
+
+    assert result is expected_value
     assert published == [("UserRegistered", "event@example.com")]
+
+
+def test_auth_application_service_does_not_publish_events_on_failure():
+    published = []
+
+    class FailingUseCase:
+        def execute(self, *args):
+            raise EmailAlreadyRegisteredError()
+
+    class UnusedUseCase:
+        def execute(self, *args):
+            raise AssertionError("Unexpected use case call")
+
+    class FakeEventPublisher:
+        def dispatch(self, event):
+            published.append(event)
+
+    service = AuthApplicationService(
+        register_user=FailingUseCase(),
+        login_user=UnusedUseCase(),
+        refresh_access_token=UnusedUseCase(),
+        logout_user=UnusedUseCase(),
+        get_current_profile=UnusedUseCase(),
+        build_role_message_use_case=UnusedUseCase(),
+        event_publisher=FakeEventPublisher(),
+    )
+
+    try:
+        service.register(user=object(), db=object())
+    except EmailAlreadyRegisteredError:
+        pass
+    else:
+        raise AssertionError("Expected EmailAlreadyRegisteredError")
+
+    assert published == []

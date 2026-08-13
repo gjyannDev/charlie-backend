@@ -6,8 +6,8 @@ from fastapi import Depends, HTTPException, status
 
 from app.models.user import User
 from app.modules.auth.Domain.Enums import UserRole
-from app.modules.auth.Domain.Rules import authRules
-from app.modules.auth.Services import get_current_user
+from app.modules.auth.Domain.Policies import rolePolicy
+from app.modules.auth.Interfaces.HTTP import get_current_user
 
 
 def require_roles(allowed_roles: list[UserRole] | None = None):
@@ -17,7 +17,7 @@ def require_roles(allowed_roles: list[UserRole] | None = None):
 
     def role_checker(current_user: User = Depends(get_current_user)):
         try:
-            authRules.ensure_allowed_role(current_user.role, allowed_roles)
+            rolePolicy.ensure_allowed_role(current_user.role, allowed_roles)
         except ValueError:
             raise HTTPException(
                 status_code=status.HTTP_403_FORBIDDEN,

@@ -10,7 +10,7 @@ from fastapi.responses import JSONResponse
 from app.core.config import settings
 from app.core.logging_config import get_logger
 from app.middleware.exception_logging import ExceptionLoggingMiddleware
-from app.modules.auth.Routes import auth_router
+from app.modules.auth.Interfaces.HTTP import auth_router
 
 logger = get_logger(__name__)
 
