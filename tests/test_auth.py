@@ -3,8 +3,11 @@ from datetime import UTC, datetime, timedelta
 from app.models.user import Token
 from app.modules.auth.Domain.Enums import UserRole
 from app.modules.auth.Domain.Events import UserRegistered
+from app.modules.auth.Controllers.auth_controller import AuthController
 from app.modules.auth.Domain.Rules import authRules
 from app.modules.auth.Listeners import authEventDispatcher
+from app.modules.auth.Listeners.event_dispatcher import AuthEventDispatcher
+from app.modules.auth.Services.auth_service import AuthUseCaseResult
 
 
 def test_register_and_login_flow(client, db_session):
@@ -209,3 +212,56 @@ def test_auth_event_dispatcher_invokes_listener(monkeypatch):
     )
 
     assert calls == ["event@example.com"]
+
+
+def test_auth_event_dispatcher_supports_multiple_listeners():
+    calls = []
+
+    def first_listener(event):
+        calls.append(("first", event.email))
+
+    def second_listener(event):
+        calls.append(("second", event.email))
+
+    dispatcher = AuthEventDispatcher()
+    dispatcher.register(UserRegistered, first_listener, second_listener)
+
+    dispatcher.dispatch(
+        UserRegistered(user_id=1, email="event@example.com", role="user")
+    )
+
+    assert calls == [
+        ("first", "event@example.com"),
+        ("second", "event@example.com"),
+    ]
+
+
+def test_auth_controller_publishes_service_events(monkeypatch):
+    published = []
+
+    monkeypatch.setattr(
+        "app.modules.auth.Controllers.auth_controller.authEventDispatcher.dispatch",
+        lambda event: published.append((type(event).__name__, event.email)),
+    )
+
+    expected_value = object()
+    expected_event = UserRegistered(
+        user_id=1,
+        email="event@example.com",
+        role="user",
+    )
+
+    class FakeAuthService:
+        def register(self, user, db):
+            return AuthUseCaseResult(
+                value=expected_value,
+                events=(expected_event,),
+            )
+
+    controller = AuthController()
+    controller.auth_service = FakeAuthService()
+
+    result = controller.register(user=object(), db=object())
+
+    assert result is expected_value
+    assert published == [("UserRegistered", "event@example.com")]

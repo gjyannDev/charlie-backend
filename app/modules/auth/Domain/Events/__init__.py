@@ -5,9 +5,12 @@ from .auth_events import (
     UserLoggedOut,
     UserRegistered,
 )
+from .publisher import AuthEventHandler, AuthEventPublisher
 
 __all__ = [
     "AuthEvent",
+    "AuthEventHandler",
+    "AuthEventPublisher",
     "TokenRefreshed",
     "UserLoggedIn",
     "UserLoggedOut",

@@ -2,7 +2,9 @@
 Auth use-case services.
 """
 
+from dataclasses import dataclass
 from datetime import timedelta
+from typing import Generic, TypeVar
 
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
@@ -10,17 +12,25 @@ from sqlalchemy.orm import Session
 from app.core.config import settings
 from app.models.user import User
 from app.modules.auth.Domain.Events import (
+    AuthEvent,
     TokenRefreshed,
     UserLoggedIn,
     UserLoggedOut,
     UserRegistered,
 )
 from app.modules.auth.Domain.Rules import authRules
-from app.modules.auth.Listeners import authEventDispatcher
 from app.modules.auth.Repository import tokenRepository, userRepository
 from app.modules.auth.Schemas.user import UserLogin, UserRegister
 from app.modules.auth.Services.password_service import passwordService
 from app.modules.auth.Services.token_service import tokenService
+
+T = TypeVar("T")
+
+
+@dataclass(slots=True)
+class AuthUseCaseResult(Generic[T]):
+    value: T
+    events: tuple[AuthEvent, ...] = ()
 
 
 class AuthService:
@@ -30,7 +40,9 @@ class AuthService:
         self.password_service = passwordService
         self.token_service = tokenService
         self.auth_rules = authRules
-        self.event_dispatcher = authEventDispatcher
+
+    def _result(self, value: T, *events: AuthEvent) -> AuthUseCaseResult[T]:
+        return AuthUseCaseResult(value=value, events=events)
 
     def _commit(self, db: Session) -> None:
         try:
@@ -39,7 +51,7 @@ class AuthService:
             db.rollback()
             raise
 
-    def register(self, user: UserRegister, db: Session) -> User:
+    def register(self, user: UserRegister, db: Session) -> AuthUseCaseResult[User]:
         existing_user = self.user_repository.get_by_email(db, user.email)
         if existing_user:
             raise HTTPException(status_code=400, detail="Email already registered")
@@ -60,16 +72,16 @@ class AuthService:
             raise HTTPException(status_code=500, detail="User creation failed")
 
         self._commit(db)
-        self.event_dispatcher.dispatch(
+        return self._result(
+            new_user,
             UserRegistered(
                 user_id=new_user.id,
                 email=new_user.email,
                 role=new_user.role.value,
-            )
+            ),
         )
-        return new_user
 
-    def login(self, user: UserLogin, db: Session) -> dict[str, str]:
+    def login(self, user: UserLogin, db: Session) -> AuthUseCaseResult[dict[str, str]]:
         db_user = self.user_repository.get_by_email(db, user.email)
         if not db_user or not self.password_service.verify(
             user.password, db_user.hashed_password
@@ -104,16 +116,18 @@ class AuthService:
         )
         self._commit(db)
 
-        self.event_dispatcher.dispatch(
-            UserLoggedIn(user_id=db_user_id, email=db_user_email)
+        return self._result(
+            {
+                "access_token": access_token,
+                "refresh_token": refresh_token,
+                "token_type": "bearer",
+            },
+            UserLoggedIn(user_id=db_user_id, email=db_user_email),
         )
-        return {
-            "access_token": access_token,
-            "refresh_token": refresh_token,
-            "token_type": "bearer",
-        }
 
-    def refresh(self, refresh_token: str, db: Session) -> dict[str, str | None]:
+    def refresh(
+        self, refresh_token: str, db: Session
+    ) -> AuthUseCaseResult[dict[str, str | None]]:
         payload = self.token_service.verify_refresh_token(refresh_token, db)
         user_id = payload["user_id"]
         email = payload["email"]
@@ -138,26 +152,26 @@ class AuthService:
             expires_delta=access_expires,
         )
 
-        self.event_dispatcher.dispatch(
-            TokenRefreshed(user_id=db_user_id, email=db_user_email)
+        return self._result(
+            {
+                "access_token": new_access_token,
+                "refresh_token": None,
+                "token_type": "bearer",
+            },
+            TokenRefreshed(user_id=db_user_id, email=db_user_email),
         )
-        return {
-            "access_token": new_access_token,
-            "refresh_token": None,
-            "token_type": "bearer",
-        }
 
-    def logout(self, refresh_token: str, db: Session) -> dict[str, str]:
+    def logout(self, refresh_token: str, db: Session) -> AuthUseCaseResult[dict[str, str]]:
         db_token = self.token_repository.get_by_token(db, refresh_token)
         if not db_token:
             raise HTTPException(status_code=400, detail="Invalid refresh token")
 
         self.token_repository.revoke(db, db_token)
         self._commit(db)
-        self.event_dispatcher.dispatch(
-            UserLoggedOut(user_id=db_token.user_id, token_id=db_token.id)
+        return self._result(
+            {"message": "Refresh token revoked successfully"},
+            UserLoggedOut(user_id=db_token.user_id, token_id=db_token.id),
         )
-        return {"message": "Refresh token revoked successfully"}
 
     def get_me(self, current_user: User) -> User:
         return current_user
