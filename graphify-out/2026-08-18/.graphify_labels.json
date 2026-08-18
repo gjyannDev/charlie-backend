@@ -1,10 +1,10 @@
 {
-  "0": "register_user.py",
-  "1": "User",
+  "0": "AuthUseCaseResult",
+  "1": "auth_routes.py",
   "2": "test_auth.py",
   "3": "main.py",
   "4": "AuthEvent",
-  "5": "Token",
+  "5": "models/user.py",
   "6": "What Changed",
   "7": "UserRole",
   "8": "AuthApplicationService",
@@ -29,5 +29,7 @@
   "27": "utils/__init__.py",
   "28": "validation.py",
   "29": "charlie-backend",
-  "30": "tests/__init__.py"
+  "30": "tests/__init__.py",
+  "31": "User",
+  "32": "Settings"
 }

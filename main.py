@@ -26,7 +26,7 @@ for router in [auth_router]:
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=settings.cors_allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
     allow_credentials=True,

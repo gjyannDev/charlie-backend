@@ -37,6 +37,14 @@ class Settings(BaseSettings):
     jwt_refresh_token_expire_minutes: int = 1440
     login_url: str = "/auth/login"
 
+    # CORS configuration
+    cors_allowed_origins: list[str] = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+    ]
+
     # Logging configuration
     log_level: str = "INFO"
     log_file: str = "logs/app.log"

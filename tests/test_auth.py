@@ -60,6 +60,20 @@ def test_register_and_login_flow(client, db_session):
     assert me_response.json()["email"] == "user@example.com"
 
 
+def test_cors_allows_local_frontend_with_credentials(client):
+    response = client.options(
+        "/auth/check-email",
+        headers={
+            "Origin": "http://localhost:3000",
+            "Access-Control-Request-Method": "POST",
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.headers["access-control-allow-origin"] == "http://localhost:3000"
+    assert response.headers["access-control-allow-credentials"] == "true"
+
+
 def test_check_email_returns_true_for_existing_email(client):
     client.post(
         "/auth/register",

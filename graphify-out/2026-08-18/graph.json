@@ -54,8 +54,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_core_config",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "config.py"
     },
     {
@@ -67,8 +67,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_core_config_settings",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 32,
+      "community_name": "Settings",
       "norm_label": "settings"
     },
     {
@@ -78,8 +78,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "basesettings",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 32,
+      "community_name": "Settings",
       "norm_label": "basesettings"
     },
     {
@@ -91,8 +91,8 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_core_config_config",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 32,
+      "community_name": "Settings",
       "norm_label": "config"
     },
     {
@@ -102,8 +102,8 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "app_core_config_rationale_5",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 32,
+      "community_name": "Settings",
       "norm_label": "application settings loaded from environment variables (.env). centralized..."
     },
     {
@@ -113,8 +113,8 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "app_core_config_rationale_45",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 32,
+      "community_name": "Settings",
       "norm_label": "pydantic configuration to load settings from `.env` file."
     },
     {
@@ -124,8 +124,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_core_database",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "database.py"
     },
     {
@@ -136,8 +136,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_core_database_get_db",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "get_db()"
     },
     {
@@ -147,8 +147,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_core_database_rationale_1",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "database.py - database configuration and session management. this module sets..."
     },
     {
@@ -158,8 +158,8 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "app_core_database_rationale_36",
-      "community": 3,
-      "community_name": "main.py",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "dependency that provides a sqlalchemy database session. yields: db (session): a..."
     },
     {
@@ -215,7 +215,7 @@
       "_origin": "ast",
       "id": "app_dependencies",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "dependencies.py"
     },
     {
@@ -226,8 +226,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_dependencies_require_roles",
-      "community": 7,
-      "community_name": "UserRole",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "require_roles()"
     },
     {
@@ -238,7 +238,7 @@
       "_origin": "ast",
       "id": "app_dependencies_rationale_1",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "reusable fastapi dependencies."
     },
     {
@@ -248,8 +248,8 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "app_dependencies_rationale_14",
-      "community": 7,
-      "community_name": "UserRole",
+      "community": 1,
+      "community_name": "auth_routes.py",
       "norm_label": "enforce role-based access control for authenticated endpoints."
     },
     {
@@ -383,8 +383,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_models_init",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "models/__init__.py"
     },
     {
@@ -416,8 +416,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_models_user",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "models/user.py"
     },
     {
@@ -429,7 +429,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_models_user_user",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "user"
     },
@@ -440,8 +440,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "base",
-      "community": 5,
-      "community_name": "Token",
+      "community": 31,
+      "community_name": "User",
       "norm_label": "base"
     },
     {
@@ -454,7 +454,7 @@
       "_origin": "ast",
       "id": "app_models_user_token",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "token"
     },
     {
@@ -464,8 +464,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_models_user_rationale_1",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "users.py - sqlalchemy models for user and token. defines the user and token..."
     },
     {
@@ -475,7 +475,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_models_user_rationale_18",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "represents an application user."
     },
@@ -487,7 +487,7 @@
       "_origin": "ast",
       "id": "app_models_user_rationale_57",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "represents a refresh token issued to a user."
     },
     {
@@ -498,7 +498,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_dtos_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "dtos/__init__.py"
     },
     {
@@ -509,7 +509,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_dtos_auth_result",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "auth_result.py"
     },
     {
@@ -522,7 +522,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_dtos_auth_result_authusecaseresult",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "authusecaseresult"
     },
     {
@@ -533,7 +533,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_dtos_auth_result_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application dtos for auth use-case results."
     },
     {
@@ -717,7 +717,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "ports/__init__.py"
     },
     {
@@ -786,7 +786,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "password_hasher.py"
     },
     {
@@ -799,7 +799,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher_passwordhasherport",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "passwordhasherport"
     },
     {
@@ -810,7 +810,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher_py_protocol",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "protocol"
     },
     {
@@ -822,7 +822,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher_passwordhasherport_hash",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".hash()"
     },
     {
@@ -834,7 +834,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher_passwordhasherport_verify",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".verify()"
     },
     {
@@ -845,7 +845,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_password_hasher_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application port for password hashing."
     },
     {
@@ -856,7 +856,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "refresh_token_repository.py"
     },
     {
@@ -869,7 +869,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_refreshtokenrepositoryport",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "refreshtokenrepositoryport"
     },
     {
@@ -880,7 +880,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_py_protocol",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "protocol"
     },
     {
@@ -892,7 +892,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_refreshtokenrepositoryport_create",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".create()"
     },
     {
@@ -903,7 +903,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -914,7 +914,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_py_datetime",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "datetime"
     },
     {
@@ -926,7 +926,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_refreshtokenrepositoryport_get_by_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".get_by_token()"
     },
     {
@@ -938,7 +938,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_refreshtokenrepositoryport_revoke",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".revoke()"
     },
     {
@@ -949,7 +949,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_refresh_token_repository_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application port for refresh-token persistence."
     },
     {
@@ -960,7 +960,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "token_issuer.py"
     },
     {
@@ -973,7 +973,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_tokenissuerport",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "tokenissuerport"
     },
     {
@@ -984,7 +984,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_py_protocol",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "protocol"
     },
     {
@@ -996,7 +996,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_tokenissuerport_create_access_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".create_access_token()"
     },
     {
@@ -1007,7 +1007,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_py_timedelta",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "timedelta"
     },
     {
@@ -1019,7 +1019,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_tokenissuerport_create_refresh_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".create_refresh_token()"
     },
     {
@@ -1031,7 +1031,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_tokenissuerport_store_refresh_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".store_refresh_token()"
     },
     {
@@ -1042,7 +1042,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1054,7 +1054,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_tokenissuerport_verify_refresh_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".verify_refresh_token()"
     },
     {
@@ -1065,7 +1065,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_token_issuer_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application port for issuing and validating tokens."
     },
     {
@@ -1076,7 +1076,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "unit_of_work.py"
     },
     {
@@ -1089,7 +1089,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work_unitofworkport",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "unitofworkport"
     },
     {
@@ -1100,7 +1100,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work_py_protocol",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "protocol"
     },
     {
@@ -1112,7 +1112,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work_unitofworkport_commit",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".commit()"
     },
     {
@@ -1123,7 +1123,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1134,7 +1134,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_unit_of_work_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application port for transaction ownership."
     },
     {
@@ -1145,7 +1145,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "user_repository.py"
     },
     {
@@ -1158,7 +1158,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_userrepositoryport",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "userrepositoryport"
     },
     {
@@ -1169,7 +1169,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_py_protocol",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "protocol"
     },
     {
@@ -1180,8 +1180,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_userrepositoryport_get_by_email",
-      "community": 0,
-      "community_name": "register_user.py",
+      "community": 7,
+      "community_name": "UserRole",
       "norm_label": ".get_by_email()"
     },
     {
@@ -1191,8 +1191,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_py_any",
-      "community": 0,
-      "community_name": "register_user.py",
+      "community": 7,
+      "community_name": "UserRole",
       "norm_label": "any"
     },
     {
@@ -1203,8 +1203,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_userrepositoryport_get_by_id",
-      "community": 0,
-      "community_name": "register_user.py",
+      "community": 7,
+      "community_name": "UserRole",
       "norm_label": ".get_by_id()"
     },
     {
@@ -1215,8 +1215,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_userrepositoryport_create",
-      "community": 0,
-      "community_name": "register_user.py",
+      "community": 7,
+      "community_name": "UserRole",
       "norm_label": ".create()"
     },
     {
@@ -1227,7 +1227,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_ports_user_repository_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application port for user persistence."
     },
     {
@@ -1238,7 +1238,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_services_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "services/__init__.py"
     },
     {
@@ -1249,14 +1249,14 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "auth_application_service.py"
     },
     {
       "label": "AuthApplicationService",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L20",
+      "source_location": "L21",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
@@ -1269,19 +1269,19 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".__init__()"
     },
     {
       "label": "._publish_events()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L39",
+      "source_location": "L42",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_publish_events",
@@ -1293,7 +1293,7 @@
       "label": ".register()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L43",
+      "source_location": "L46",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_register",
@@ -1316,7 +1316,7 @@
       "label": ".login()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L48",
+      "source_location": "L51",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_login",
@@ -1325,10 +1325,22 @@
       "norm_label": ".login()"
     },
     {
+      "label": ".check_email()",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L56",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_check_email",
+      "community": 8,
+      "community_name": "AuthApplicationService",
+      "norm_label": ".check_email()"
+    },
+    {
       "label": ".refresh()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L53",
+      "source_location": "L61",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_refresh",
@@ -1340,7 +1352,7 @@
       "label": ".logout()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L58",
+      "source_location": "L66",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_logout",
@@ -1352,7 +1364,7 @@
       "label": ".get_me()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L63",
+      "source_location": "L71",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_get_me",
@@ -1364,7 +1376,7 @@
       "label": ".build_role_message()",
       "file_type": "code",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L66",
+      "source_location": "L74",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_authapplicationservice_build_role_message",
@@ -1380,7 +1392,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_services_auth_application_service_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "application service facade for auth use cases."
     },
     {
@@ -1391,7 +1403,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_services_composition",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "composition.py"
     },
     {
@@ -1402,7 +1414,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_services_composition_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "auth application service composition."
     },
     {
@@ -1413,7 +1425,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "usecases/__init__.py"
     },
     {
@@ -1424,7 +1436,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_build_role_message",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "build_role_message.py"
     },
     {
@@ -1437,7 +1449,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_build_role_message_buildrolemessageusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "buildrolemessageusecase"
     },
     {
@@ -1449,7 +1461,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_build_role_message_buildrolemessageusecase_execute",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".execute()"
     },
     {
@@ -1460,7 +1472,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_build_role_message_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1471,8 +1483,78 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_build_role_message_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "role-message use case."
+    },
+    {
+      "label": "check_email_exists.py",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": "check_email_exists.py"
+    },
+    {
+      "label": "CheckEmailExistsUseCase",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L12",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": "checkemailexistsusecase"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L13",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_init",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".execute()",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_execute",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": ".execute()"
+    },
+    {
+      "label": "Any",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": "",
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists_py_any",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": "any"
+    },
+    {
+      "label": "Check whether an auth email exists.",
+      "file_type": "rationale",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "app_modules_auth_application_usecases_check_email_exists_rationale_1",
+      "community": 0,
+      "community_name": "AuthUseCaseResult",
+      "norm_label": "check whether an auth email exists."
     },
     {
       "label": "get_current_profile.py",
@@ -1482,7 +1564,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_get_current_profile",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "get_current_profile.py"
     },
     {
@@ -1495,7 +1577,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_get_current_profile_getcurrentprofileusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "getcurrentprofileusecase"
     },
     {
@@ -1507,7 +1589,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_get_current_profile_getcurrentprofileusecase_execute",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".execute()"
     },
     {
@@ -1518,7 +1600,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_get_current_profile_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1529,7 +1611,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_get_current_profile_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "current-profile use case."
     },
     {
@@ -1540,7 +1622,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_login_user",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "login_user.py"
     },
     {
@@ -1553,7 +1635,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_login_user_loginuserusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "loginuserusecase"
     },
     {
@@ -1565,7 +1647,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_login_user_loginuserusecase_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".__init__()"
     },
     {
@@ -1577,7 +1659,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_login_user_loginuserusecase_execute",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".execute()"
     },
     {
@@ -1588,7 +1670,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_login_user_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1599,7 +1681,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_logout_user",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "logout_user.py"
     },
     {
@@ -1612,7 +1694,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_logout_user_logoutuserusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "logoutuserusecase"
     },
     {
@@ -1624,7 +1706,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_logout_user_logoutuserusecase_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".__init__()"
     },
     {
@@ -1636,7 +1718,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_logout_user_logoutuserusecase_execute",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".execute()"
     },
     {
@@ -1647,7 +1729,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_logout_user_py_any",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "any"
     },
     {
@@ -1658,7 +1740,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_refresh_access_token",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "refresh_access_token.py"
     },
     {
@@ -1671,7 +1753,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_refresh_access_token_refreshaccesstokenusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "refreshaccesstokenusecase"
     },
     {
@@ -1683,7 +1765,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_refresh_access_token_refreshaccesstokenusecase_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".__init__()"
     },
     {
@@ -1717,7 +1799,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_refresh_access_token_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "refresh-access-token use case."
     },
     {
@@ -1728,7 +1810,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_register_user",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "register_user.py"
     },
     {
@@ -1741,7 +1823,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_register_user_registeruserusecase",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "registeruserusecase"
     },
     {
@@ -1753,7 +1835,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_register_user_registeruserusecase_init",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": ".__init__()"
     },
     {
@@ -1787,7 +1869,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_application_usecases_register_user_rationale_1",
       "community": 0,
-      "community_name": "register_user.py",
+      "community_name": "AuthUseCaseResult",
       "norm_label": "register-user use case."
     },
     {
@@ -2324,7 +2406,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_init",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "persistence/__init__.py"
     },
     {
@@ -2335,7 +2417,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy_refresh_token_repository.py"
     },
     {
@@ -2348,7 +2430,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_refreshtokenrepository",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "refreshtokenrepository"
     },
     {
@@ -2360,7 +2442,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_refreshtokenrepository_create",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": ".create()"
     },
     {
@@ -2371,7 +2453,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_py_session",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "session"
     },
     {
@@ -2382,7 +2464,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_py_datetime",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "datetime"
     },
     {
@@ -2394,7 +2476,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_refreshtokenrepository_get_by_token",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": ".get_by_token()"
     },
     {
@@ -2406,7 +2488,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_refreshtokenrepository_revoke",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": ".revoke()"
     },
     {
@@ -2417,7 +2499,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_refresh_token_repository_rationale_1",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy refresh-token repository implementation."
     },
     {
@@ -2428,7 +2510,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_unit_of_work",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy_unit_of_work.py"
     },
     {
@@ -2441,7 +2523,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_unit_of_work_sqlalchemyunitofwork",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemyunitofwork"
     },
     {
@@ -2453,7 +2535,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_unit_of_work_sqlalchemyunitofwork_commit",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": ".commit()"
     },
     {
@@ -2464,7 +2546,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_unit_of_work_py_any",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "any"
     },
     {
@@ -2475,7 +2557,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_unit_of_work_rationale_1",
       "community": 5,
-      "community_name": "Token",
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy unit-of-work implementation."
     },
     {
@@ -2485,8 +2567,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy_user_repository.py"
     },
     {
@@ -2498,7 +2580,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_userrepository",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "userrepository"
     },
@@ -2510,7 +2592,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_userrepository_get_by_email",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".get_by_email()"
     },
@@ -2521,7 +2603,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_py_session",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "session"
     },
@@ -2533,7 +2615,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_userrepository_get_by_id",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".get_by_id()"
     },
@@ -2545,7 +2627,7 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_userrepository_create",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".create()"
     },
@@ -2556,8 +2638,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_persistence_sqlalchemy_user_repository_rationale_1",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "sqlalchemy user repository implementation."
     },
     {
@@ -2567,8 +2649,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_init",
-      "community": 2,
-      "community_name": "test_auth.py",
+      "community": 9,
+      "community_name": "Argon2PasswordHasher",
       "norm_label": "security/__init__.py"
     },
     {
@@ -2710,8 +2792,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_jwttokenissuer_create_access_token",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": ".create_access_token()"
     },
     {
@@ -2721,8 +2803,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_py_timedelta",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": "timedelta"
     },
     {
@@ -2733,8 +2815,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_jwttokenissuer_create_refresh_token",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": ".create_refresh_token()"
     },
     {
@@ -2757,8 +2839,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_jwttokenissuer_store_refresh_token",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": ".store_refresh_token()"
     },
     {
@@ -2768,8 +2850,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_py_session",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": "session"
     },
     {
@@ -2815,8 +2897,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_jwttokenissuer_get_current_user",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": ".get_current_user()"
     },
     {
@@ -2839,8 +2921,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_infrastructure_security_jwt_token_issuer_jwttokenissuer_store_token",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": ".store_token()"
     },
     {
@@ -2884,19 +2966,19 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_init",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "http/__init__.py"
     },
     {
       "label": "__getattr__()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L25",
+      "source_location": "L29",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_init_getattr",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "__getattr__()"
     },
     {
@@ -2907,19 +2989,19 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "auth_controller.py"
     },
     {
       "label": "AuthController",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L16",
+      "source_location": "L20",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "authcontroller"
     },
@@ -2927,11 +3009,11 @@
       "label": ".__init__()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L17",
+      "source_location": "L21",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_init",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".__init__()"
     },
@@ -2939,11 +3021,11 @@
       "label": "._run_operation()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L20",
+      "source_location": "L24",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_run_operation",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "._run_operation()"
     },
@@ -2951,11 +3033,11 @@
       "label": ".register()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L26",
+      "source_location": "L30",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_register",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".register()"
     },
@@ -2966,7 +3048,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_py_session",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "session"
     },
@@ -2974,23 +3056,35 @@
       "label": ".login()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L29",
+      "source_location": "L33",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_login",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".login()"
+    },
+    {
+      "label": ".check_email()",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L36",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_check_email",
+      "community": 31,
+      "community_name": "User",
+      "norm_label": ".check_email()"
     },
     {
       "label": ".refresh()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L32",
+      "source_location": "L39",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_refresh",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".refresh()"
     },
@@ -2998,11 +3092,11 @@
       "label": ".logout()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L35",
+      "source_location": "L42",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_logout",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".logout()"
     },
@@ -3010,11 +3104,11 @@
       "label": ".get_me()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L38",
+      "source_location": "L45",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_get_me",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".get_me()"
     },
@@ -3022,11 +3116,11 @@
       "label": ".admin_role()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L41",
+      "source_location": "L48",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_admin_role",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".admin_role()"
     },
@@ -3034,11 +3128,11 @@
       "label": ".user_role()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L47",
+      "source_location": "L54",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_user_role",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".user_role()"
     },
@@ -3046,11 +3140,11 @@
       "label": ".multi_role()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L53",
+      "source_location": "L60",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_authcontroller_multi_role",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": ".multi_role()"
     },
@@ -3062,7 +3156,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_controller_rationale_1",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "controller layer for auth http orchestration."
     },
     {
@@ -3073,7 +3167,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_dependencies",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "auth_dependencies.py"
     },
     {
@@ -3085,7 +3179,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_dependencies_get_current_user",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "get_current_user()"
     },
     {
@@ -3096,7 +3190,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_dependencies_py_session",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "session"
     },
     {
@@ -3107,7 +3201,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_dependencies_rationale_1",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "http dependencies for auth."
     },
     {
@@ -3118,7 +3212,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "auth_routes.py"
     },
     {
@@ -3129,19 +3223,19 @@
       "_origin": "ast",
       "id": "post",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "post"
     },
     {
       "label": "register()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L27",
+      "source_location": "L29",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_register",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "register()"
     },
     {
@@ -3152,43 +3246,55 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_py_session",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "session"
     },
     {
       "label": "login()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L32",
+      "source_location": "L34",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_login",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "login()"
+    },
+    {
+      "label": "check_email()",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L39",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_interfaces_http_auth_routes_check_email",
+      "community": 1,
+      "community_name": "auth_routes.py",
+      "norm_label": "check_email()"
     },
     {
       "label": "refresh_token()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L37",
+      "source_location": "L44",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_refresh_token",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "refresh_token()"
     },
     {
       "label": "logout()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L42",
+      "source_location": "L49",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_logout",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "logout()"
     },
     {
@@ -3198,7 +3304,7 @@
       "source_location": "",
       "_origin": "ast",
       "id": "get",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "get"
     },
@@ -3206,11 +3312,11 @@
       "label": "get_me()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L47",
+      "source_location": "L54",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_get_me",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "get_me()"
     },
@@ -3218,11 +3324,11 @@
       "label": "admin_role_api()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L52",
+      "source_location": "L59",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_admin_role_api",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "admin_role_api()"
     },
@@ -3230,11 +3336,11 @@
       "label": "user_role_api()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L57",
+      "source_location": "L64",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_user_role_api",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "user_role_api()"
     },
@@ -3242,11 +3348,11 @@
       "label": "multiple_role_api()",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L62",
+      "source_location": "L69",
       "_callable": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_multiple_role_api",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "multiple_role_api()"
     },
@@ -3258,7 +3364,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_auth_routes_rationale_1",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "auth routes exposed by the auth module."
     },
     {
@@ -3291,8 +3397,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "httpexception",
-      "community": 5,
-      "community_name": "Token",
+      "community": 2,
+      "community_name": "test_auth.py",
       "norm_label": "httpexception"
     },
     {
@@ -3314,7 +3420,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "schemas.py"
     },
     {
@@ -3327,7 +3433,7 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas_userregister",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "userregister"
     },
     {
@@ -3338,7 +3444,7 @@
       "_origin": "ast",
       "id": "basemodel",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "basemodel"
     },
     {
@@ -3351,59 +3457,85 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas_userlogin",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "userlogin"
     },
     {
-      "label": "RefreshTokenRequest",
+      "label": "EmailCheckRequest",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
       "source_location": "L26",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "app_modules_auth_interfaces_http_schemas_refreshtokenrequest",
+      "id": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
       "community": 1,
-      "community_name": "User",
-      "norm_label": "refreshtokenrequest"
+      "community_name": "auth_routes.py",
+      "norm_label": "emailcheckrequest"
     },
     {
-      "label": "UserResponse",
+      "label": "EmailCheckResponse",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
       "source_location": "L32",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "id": "app_modules_auth_interfaces_http_schemas_userresponse",
+      "id": "app_modules_auth_interfaces_http_schemas_emailcheckresponse",
       "community": 1,
-      "community_name": "User",
-      "norm_label": "userresponse"
+      "community_name": "auth_routes.py",
+      "norm_label": "emailcheckresponse"
     },
     {
-      "label": "TokenResponse",
+      "label": "RefreshTokenRequest",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L36",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "id": "app_modules_auth_interfaces_http_schemas_refreshtokenrequest",
+      "community": 1,
+      "community_name": "auth_routes.py",
+      "norm_label": "refreshtokenrequest"
+    },
+    {
+      "label": "UserResponse",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
       "source_location": "L42",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
+      "id": "app_modules_auth_interfaces_http_schemas_userresponse",
+      "community": 1,
+      "community_name": "auth_routes.py",
+      "norm_label": "userresponse"
+    },
+    {
+      "label": "TokenResponse",
+      "file_type": "code",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L52",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas_tokenresponse",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "tokenresponse"
     },
     {
       "label": "MeSchema",
       "file_type": "code",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L48",
+      "source_location": "L58",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas_meschema",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "meschema"
     },
     {
@@ -3414,18 +3546,18 @@
       "_origin": "ast",
       "id": "app_modules_auth_interfaces_http_schemas_rationale_1",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "pydantic schemas for auth requests and responses."
     },
     {
       "label": "Schema returned by /auth/me endpoint.",
       "file_type": "rationale",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L49",
+      "source_location": "L59",
       "_origin": "ast",
-      "id": "app_modules_auth_interfaces_http_schemas_rationale_49",
+      "id": "app_modules_auth_interfaces_http_schemas_rationale_59",
       "community": 1,
-      "community_name": "User",
+      "community_name": "auth_routes.py",
       "norm_label": "schema returned by /auth/me endpoint."
     },
     {
@@ -3490,8 +3622,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_utils_token",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "token.py"
     },
     {
@@ -3502,8 +3634,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_utils_token_create_access_token",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "create_access_token()"
     },
     {
@@ -3514,8 +3646,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_utils_token_create_refresh_token",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "create_refresh_token()"
     },
     {
@@ -3526,8 +3658,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_utils_token_store_token",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "store_token()"
     },
     {
@@ -3538,8 +3670,8 @@
       "_callable": true,
       "_origin": "ast",
       "id": "app_utils_token_verify_token",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "verify_token()"
     },
     {
@@ -3549,8 +3681,8 @@
       "source_location": "",
       "_origin": "ast",
       "id": "app_utils_token_py_session",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "session"
     },
     {
@@ -3560,8 +3692,8 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_utils_token_rationale_1",
-      "community": 1,
-      "community_name": "User",
+      "community": 5,
+      "community_name": "models/user.py",
       "norm_label": "compatibility wrappers for legacy token imports."
     },
     {
@@ -3956,10 +4088,58 @@
       "norm_label": "test_register_and_login_flow()"
     },
     {
-      "label": "test_duplicate_register_maps_application_error_to_http()",
+      "label": "test_check_email_returns_true_for_existing_email()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
       "source_location": "L63",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_auth_test_check_email_returns_true_for_existing_email",
+      "community": 2,
+      "community_name": "test_auth.py",
+      "norm_label": "test_check_email_returns_true_for_existing_email()"
+    },
+    {
+      "label": "test_check_email_returns_false_for_missing_email()",
+      "file_type": "code",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L80",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_auth_test_check_email_returns_false_for_missing_email",
+      "community": 2,
+      "community_name": "test_auth.py",
+      "norm_label": "test_check_email_returns_false_for_missing_email()"
+    },
+    {
+      "label": "test_check_email_rejects_invalid_email()",
+      "file_type": "code",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L87",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_auth_test_check_email_rejects_invalid_email",
+      "community": 2,
+      "community_name": "test_auth.py",
+      "norm_label": "test_check_email_rejects_invalid_email()"
+    },
+    {
+      "label": "test_check_email_does_not_require_authentication()",
+      "file_type": "code",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L93",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "tests_test_auth_test_check_email_does_not_require_authentication",
+      "community": 2,
+      "community_name": "test_auth.py",
+      "norm_label": "test_check_email_does_not_require_authentication()"
+    },
+    {
+      "label": "test_duplicate_register_maps_application_error_to_http()",
+      "file_type": "code",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L100",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_duplicate_register_maps_application_error_to_http",
@@ -3971,7 +4151,7 @@
       "label": "test_refresh_and_logout_flow()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L79",
+      "source_location": "L116",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_refresh_and_logout_flow",
@@ -3983,7 +4163,7 @@
       "label": "test_refresh_token_expiry_is_enforced()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L117",
+      "source_location": "L154",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_refresh_token_expiry_is_enforced",
@@ -3995,7 +4175,7 @@
       "label": "test_refresh_and_logout_reject_query_params()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L144",
+      "source_location": "L181",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_refresh_and_logout_reject_query_params",
@@ -4007,7 +4187,7 @@
       "label": "test_admin_endpoint_requires_admin_role()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L158",
+      "source_location": "L195",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_admin_endpoint_requires_admin_role",
@@ -4019,7 +4199,7 @@
       "label": "test_users_routes_are_removed()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L203",
+      "source_location": "L240",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_users_routes_are_removed",
@@ -4031,7 +4211,7 @@
       "label": "test_auth_rules_accept_string_role()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L216",
+      "source_location": "L253",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_rules_accept_string_role",
@@ -4043,7 +4223,7 @@
       "label": "test_auth_rules_reject_invalid_role()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L220",
+      "source_location": "L257",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_rules_reject_invalid_role",
@@ -4055,7 +4235,7 @@
       "label": "test_auth_error_mapper_preserves_http_contract()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L229",
+      "source_location": "L266",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -4067,7 +4247,7 @@
       "label": "test_auth_event_dispatcher_invokes_listener()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L249",
+      "source_location": "L286",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_event_dispatcher_invokes_listener",
@@ -4079,7 +4259,7 @@
       "label": "test_auth_event_dispatcher_supports_multiple_listeners()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L268",
+      "source_location": "L305",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_event_dispatcher_supports_multiple_listeners",
@@ -4091,11 +4271,11 @@
       "label": "test_auth_controller_delegates_to_application_service()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L290",
+      "source_location": "L327",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_controller_delegates_to_application_service",
-      "community": 1,
+      "community": 31,
       "community_name": "User",
       "norm_label": "test_auth_controller_delegates_to_application_service()"
     },
@@ -4103,7 +4283,7 @@
       "label": "test_auth_application_service_publishes_use_case_events()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L305",
+      "source_location": "L342",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_application_service_publishes_use_case_events",
@@ -4115,7 +4295,7 @@
       "label": "test_auth_application_service_does_not_publish_events_on_failure()",
       "file_type": "code",
       "source_file": "tests/test_auth.py",
-      "source_location": "L334",
+      "source_location": "L372",
       "_callable": true,
       "_origin": "ast",
       "id": "tests_test_auth_test_auth_application_service_does_not_publish_events_on_failure",
@@ -5350,7 +5530,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_admin_role",
@@ -5362,7 +5542,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L38",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_get_me",
@@ -5374,7 +5554,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L53",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_multi_role",
@@ -5386,7 +5566,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L47",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_user_role",
@@ -5434,7 +5614,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L52",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_admin_role_api",
@@ -5446,7 +5626,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L47",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_get_me",
@@ -5458,7 +5638,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L62",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_multiple_role_api",
@@ -5470,7 +5650,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L57",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_user_role_api",
@@ -5702,6 +5882,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_application_dtos_auth_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/login_user.py",
       "source_location": "L8",
       "weight": 1.0,
@@ -5744,6 +5936,41 @@
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_register_user",
       "target": "app_modules_auth_application_dtos_auth_result",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_application_dtos_auth_result_authusecaseresult",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L7",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "target": "app_modules_auth_application_dtos_auth_result_authusecaseresult",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_execute",
+      "target": "app_modules_auth_application_dtos_auth_result_authusecaseresult",
       "confidence_score": 1.0
     },
     {
@@ -5903,7 +6130,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L312",
+      "source_location": "L349",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_application_service_publishes_use_case_events",
@@ -6457,7 +6684,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L339",
+      "source_location": "L377",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_application_service_does_not_publish_events_on_failure",
@@ -6469,7 +6696,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L231",
+      "source_location": "L268",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -6540,7 +6767,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L232",
+      "source_location": "L269",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -6611,7 +6838,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L233",
+      "source_location": "L270",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -6740,7 +6967,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L234",
+      "source_location": "L271",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -6822,7 +7049,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L235",
+      "source_location": "L272",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -6997,7 +7224,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L236",
+      "source_location": "L273",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -7138,7 +7365,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L237",
+      "source_location": "L274",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -7385,7 +7612,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8192,6 +8419,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_application_ports_user_repository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/login_user.py",
       "source_location": "L16",
       "weight": 1.0,
@@ -8266,6 +8505,41 @@
       "_origin": "ast",
       "source": "app_modules_auth_application_ports_user_repository_userrepositoryport",
       "target": "app_modules_auth_application_ports_user_repository_userrepositoryport_get_by_id",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_application_ports_user_repository_userrepositoryport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L8",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "target": "app_modules_auth_application_ports_user_repository_userrepositoryport",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_init",
+      "target": "app_modules_auth_application_ports_user_repository_userrepositoryport",
       "confidence_score": 1.0
     },
     {
@@ -8461,7 +8735,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L20",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
@@ -8478,6 +8752,18 @@
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
       "target": "app_modules_auth_application_usecases_build_role_message_buildrolemessageusecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
       "confidence_score": 1.0
     },
     {
@@ -8545,7 +8831,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L16",
+      "source_location": "L17",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
@@ -8557,7 +8843,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
@@ -8569,7 +8855,19 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L17",
+      "source_location": "L18",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
@@ -8581,7 +8879,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service",
@@ -8615,7 +8913,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L66",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8626,7 +8924,18 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L63",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
+      "target": "app_modules_auth_application_services_auth_application_service_authapplicationservice_check_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8637,7 +8946,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8648,7 +8957,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L48",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8659,7 +8968,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L58",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8670,7 +8979,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L39",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8681,7 +8990,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L53",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8692,7 +9001,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L43",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8703,7 +9012,18 @@
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L17",
+      "source_location": "L18",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L18",
       "weight": 0.8,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8714,7 +9034,7 @@
       "relation": "uses",
       "confidence": "INFERRED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L17",
+      "source_location": "L18",
       "weight": 0.8,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice",
@@ -8750,7 +9070,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L349",
+      "source_location": "L387",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_application_service_does_not_publish_events_on_failure",
@@ -8762,7 +9082,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L318",
+      "source_location": "L355",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_application_service_publishes_use_case_events",
@@ -8774,7 +9094,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8786,7 +9106,19 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8798,7 +9130,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8810,7 +9142,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8822,7 +9154,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8834,7 +9166,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_init",
@@ -8846,7 +9178,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L50",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_check_email",
+      "target": "app_modules_auth_application_services_auth_application_service_authapplicationservice_publish_events",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L53",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_login",
@@ -8858,7 +9202,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L60",
+      "source_location": "L68",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_logout",
@@ -8870,7 +9214,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L39",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_publish_events",
@@ -8882,7 +9226,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L55",
+      "source_location": "L63",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_refresh",
@@ -8894,7 +9238,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L45",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_register",
@@ -8906,7 +9250,7 @@
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L43",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_register",
@@ -8918,7 +9262,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L43",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_register",
@@ -8930,7 +9274,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L66",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_build_role_message",
@@ -8939,10 +9283,22 @@
     },
     {
       "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_check_email",
+      "target": "app_modules_auth_application_services_auth_application_service_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
       "context": "return_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L63",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_get_me",
@@ -8954,7 +9310,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L48",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_login",
@@ -8966,7 +9322,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L58",
+      "source_location": "L66",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_logout",
@@ -8978,7 +9334,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L53",
+      "source_location": "L61",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_refresh",
@@ -8990,11 +9346,23 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
-      "source_location": "L48",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_login",
       "target": "app_modules_auth_interfaces_http_schemas_userlogin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/auth_application_service.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_auth_application_service_authapplicationservice_check_email",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
       "confidence_score": 1.0
     },
     {
@@ -9007,6 +9375,18 @@
       "_origin": "ast",
       "source": "app_modules_auth_application_services_composition",
       "target": "app_modules_auth_application_usecases_build_role_message_buildrolemessageusecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/Services/composition.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_services_composition",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
       "confidence_score": 1.0
     },
     {
@@ -9113,7 +9493,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
-      "target": "app_modules_auth_application_usecases_get_current_profile",
+      "target": "app_modules_auth_application_usecases_check_email_exists",
       "confidence_score": 1.0
     },
     {
@@ -9125,7 +9505,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
-      "target": "app_modules_auth_application_usecases_get_current_profile_getcurrentprofileusecase",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
       "confidence_score": 1.0
     },
     {
@@ -9134,6 +9514,30 @@
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
       "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_init",
+      "target": "app_modules_auth_application_usecases_get_current_profile",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/__init__.py",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_init",
+      "target": "app_modules_auth_application_usecases_get_current_profile_getcurrentprofileusecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/__init__.py",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9145,7 +9549,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9157,7 +9561,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9169,7 +9573,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9181,7 +9585,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9193,7 +9597,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9205,7 +9609,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9217,7 +9621,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Application/UseCases/__init__.py",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_init",
@@ -9267,6 +9671,109 @@
       "_origin": "ast",
       "source": "app_modules_auth_application_usecases_build_role_message_buildrolemessageusecase_execute",
       "target": "app_modules_auth_application_usecases_build_role_message_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_interfaces_http_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_rationale_1",
+      "target": "app_modules_auth_application_usecases_check_email_exists",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_execute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "target": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L9",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 0.5
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_execute",
+      "target": "app_modules_auth_application_usecases_check_email_exists_py_any",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Application/UseCases/check_email_exists.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_application_usecases_check_email_exists_checkemailexistsusecase_execute",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
       "confidence_score": 1.0
     },
     {
@@ -10342,7 +10849,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L308",
+      "source_location": "L345",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_application_service_publishes_use_case_events",
@@ -10354,7 +10861,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L262",
+      "source_location": "L299",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_event_dispatcher_invokes_listener",
@@ -10366,7 +10873,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L281",
+      "source_location": "L318",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_event_dispatcher_supports_multiple_listeners",
@@ -10874,7 +11381,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L277",
+      "source_location": "L314",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_event_dispatcher_supports_multiple_listeners",
@@ -11753,7 +12260,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L40",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11765,7 +12272,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L40",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11777,7 +12284,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L27",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11789,7 +12296,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L27",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11801,7 +12308,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L35",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11812,7 +12319,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
@@ -11829,6 +12336,30 @@
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init",
       "target": "app_modules_auth_interfaces_http_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_init",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_init",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckresponse",
       "confidence_score": 1.0
     },
     {
@@ -11909,7 +12440,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/modules/auth/Interfaces/HTTP/__init__.py",
-      "source_location": "L30",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_init_getattr",
@@ -11919,7 +12450,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L16",
+      "source_location": "L20",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller",
@@ -11960,6 +12491,18 @@
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller",
       "target": "app_modules_auth_interfaces_http_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
       "confidence_score": 1.0
     },
     {
@@ -12025,7 +12568,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12036,7 +12579,18 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L38",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
+      "target": "app_modules_auth_interfaces_http_auth_controller_authcontroller_check_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12047,7 +12601,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L17",
+      "source_location": "L21",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12058,7 +12612,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12069,7 +12623,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L35",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12080,7 +12634,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L53",
+      "source_location": "L60",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12091,7 +12645,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L32",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12102,7 +12656,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12113,7 +12667,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L20",
+      "source_location": "L24",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
@@ -12124,12 +12678,23 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L47",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
       "target": "app_modules_auth_interfaces_http_auth_controller_authcontroller_user_role",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L13",
+      "weight": 0.8,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 0.5
     },
     {
       "relation": "uses",
@@ -12170,7 +12735,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L297",
+      "source_location": "L334",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_controller_delegates_to_application_service",
@@ -12182,7 +12747,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L30",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_check_email",
+      "target": "app_modules_auth_interfaces_http_auth_controller_authcontroller_run_operation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_login",
@@ -12194,7 +12771,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L36",
+      "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_logout",
@@ -12206,7 +12783,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L33",
+      "source_location": "L40",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_refresh",
@@ -12218,7 +12795,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L27",
+      "source_location": "L31",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_register",
@@ -12231,7 +12808,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L24",
+      "source_location": "L28",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_run_operation",
@@ -12242,7 +12819,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_register",
@@ -12254,7 +12831,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L26",
+      "source_location": "L30",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_register",
@@ -12266,7 +12843,19 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L29",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_check_email",
+      "target": "app_modules_auth_interfaces_http_auth_controller_py_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_login",
@@ -12278,7 +12867,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L35",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_logout",
@@ -12290,7 +12879,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L32",
+      "source_location": "L39",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_refresh",
@@ -12302,11 +12891,23 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
-      "source_location": "L29",
+      "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_login",
       "target": "app_modules_auth_interfaces_http_schemas_userlogin",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_controller.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_controller_authcontroller_check_email",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
       "confidence_score": 1.0
     },
     {
@@ -12383,7 +12984,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L52",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12394,7 +12995,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L47",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes",
+      "target": "app_modules_auth_interfaces_http_auth_routes_check_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L54",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12405,7 +13017,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12416,7 +13028,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L42",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12427,7 +13039,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L62",
+      "source_location": "L69",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12438,7 +13050,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L37",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12449,7 +13061,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12460,7 +13072,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L57",
+      "source_location": "L64",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
@@ -12477,6 +13089,30 @@
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes",
       "target": "app_modules_auth_interfaces_http_schemas",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckresponse",
       "confidence_score": 1.0
     },
     {
@@ -12566,7 +13202,19 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L31",
+      "source_location": "L38",
+      "weight": 1.0,
+      "context": "decorator",
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes_check_email",
+      "target": "post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L33",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12578,7 +13226,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L41",
+      "source_location": "L48",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12590,7 +13238,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L36",
+      "source_location": "L43",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12602,7 +13250,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L26",
+      "source_location": "L28",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12615,7 +13263,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_register",
@@ -12627,7 +13275,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L27",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_register",
@@ -12639,7 +13287,19 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L32",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes_check_email",
+      "target": "app_modules_auth_interfaces_http_auth_routes_py_session",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_login",
@@ -12651,7 +13311,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L42",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_logout",
@@ -12663,7 +13323,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L37",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_refresh_token",
@@ -12675,7 +13335,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_login",
@@ -12687,7 +13347,19 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L37",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_auth_routes_check_email",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_refresh_token",
@@ -12699,7 +13371,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L42",
+      "source_location": "L49",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_auth_routes_logout",
@@ -12710,7 +13382,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L51",
+      "source_location": "L58",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12722,7 +13394,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L46",
+      "source_location": "L53",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12734,7 +13406,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L61",
+      "source_location": "L68",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12746,7 +13418,7 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/auth_routes.py",
-      "source_location": "L56",
+      "source_location": "L63",
       "weight": 1.0,
       "context": "decorator",
       "_origin": "ast",
@@ -12817,7 +13489,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L242",
+      "source_location": "L279",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth_test_auth_error_mapper_preserves_http_contract",
@@ -12828,7 +13500,29 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L48",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_schemas",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_schemas",
+      "target": "app_modules_auth_interfaces_http_schemas_emailcheckresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas",
@@ -12839,7 +13533,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L26",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas",
@@ -12850,7 +13544,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L42",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas",
@@ -12883,7 +13577,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L32",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas",
@@ -12919,6 +13613,28 @@
       "source_location": "L26",
       "weight": 1.0,
       "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_schemas_emailcheckrequest",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "app_modules_auth_interfaces_http_schemas_emailcheckresponse",
+      "target": "basemodel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas_refreshtokenrequest",
       "target": "basemodel",
       "confidence_score": 1.0
@@ -12927,7 +13643,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L42",
+      "source_location": "L52",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas_tokenresponse",
@@ -12949,7 +13665,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L32",
+      "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas_userresponse",
@@ -12960,7 +13676,7 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L48",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "app_modules_auth_interfaces_http_schemas_meschema",
@@ -12971,10 +13687,10 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "app/modules/auth/Interfaces/HTTP/schemas.py",
-      "source_location": "L49",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "app_modules_auth_interfaces_http_schemas_rationale_49",
+      "source": "app_modules_auth_interfaces_http_schemas_rationale_59",
       "target": "app_modules_auth_interfaces_http_schemas_meschema",
       "confidence_score": 1.0
     },
@@ -13392,7 +14108,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L158",
+      "source_location": "L195",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13403,7 +14119,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L334",
+      "source_location": "L372",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13414,7 +14130,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L305",
+      "source_location": "L342",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13425,7 +14141,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L290",
+      "source_location": "L327",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13436,7 +14152,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L229",
+      "source_location": "L266",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13447,7 +14163,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L249",
+      "source_location": "L286",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13458,7 +14174,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L268",
+      "source_location": "L305",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13469,7 +14185,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L216",
+      "source_location": "L253",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13480,7 +14196,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L220",
+      "source_location": "L257",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13491,7 +14207,51 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_auth",
+      "target": "tests_test_auth_test_check_email_does_not_require_authentication",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L87",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_auth",
+      "target": "tests_test_auth_test_check_email_rejects_invalid_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_auth",
+      "target": "tests_test_auth_test_check_email_returns_false_for_missing_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth.py",
       "source_location": "L63",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tests_test_auth",
+      "target": "tests_test_auth_test_check_email_returns_true_for_existing_email",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tests/test_auth.py",
+      "source_location": "L100",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13502,7 +14262,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L79",
+      "source_location": "L116",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13513,7 +14273,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L144",
+      "source_location": "L181",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13524,7 +14284,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L117",
+      "source_location": "L154",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",
@@ -13546,7 +14306,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "tests/test_auth.py",
-      "source_location": "L203",
+      "source_location": "L240",
       "weight": 1.0,
       "_origin": "ast",
       "source": "tests_test_auth",

@@ -135,18 +135,18 @@
     "semantic_hash": ""
   },
   "app/modules/auth/Application/Services/auth_application_service.py": {
-    "mtime": 1786586235.4152997,
-    "ast_hash": "577eae50c8895c18fa20ff08a4cb986a",
+    "mtime": 1787055528.473572,
+    "ast_hash": "fb559655a58b38ce6cd0a31e549d9c0e",
     "semantic_hash": ""
   },
   "app/modules/auth/Application/Services/composition.py": {
-    "mtime": 1786587978.5525203,
-    "ast_hash": "95146e03e2246eeb8ef8875ae01e3a4c",
+    "mtime": 1787055533.4259033,
+    "ast_hash": "35dffa47ea5ca56843a28872ffbdb559",
     "semantic_hash": ""
   },
   "app/modules/auth/Application/UseCases/__init__.py": {
-    "mtime": 1786585188.938322,
-    "ast_hash": "95f1e1001daf1b4c466a7e283b623f7d",
+    "mtime": 1787055525.995924,
+    "ast_hash": "75895b6bfa2e7e56208496bb803dd194",
     "semantic_hash": ""
   },
   "app/modules/auth/Application/UseCases/build_role_message.py": {
@@ -280,13 +280,13 @@
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/__init__.py": {
-    "mtime": 1786587877.0344627,
-    "ast_hash": "96dd702ddc03555f1e1dee384f602b64",
+    "mtime": 1787055550.4449806,
+    "ast_hash": "cdfb93487b8c89c520cd8b64c988f7ca",
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/auth_controller.py": {
-    "mtime": 1786586278.6334977,
-    "ast_hash": "936c9dc07d3becc5187281bf23beb2fc",
+    "mtime": 1787055541.2570083,
+    "ast_hash": "e084a836ac00e4790f92ab79a7a6d316",
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/auth_dependencies.py": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/auth_routes.py": {
-    "mtime": 1786586006.1307914,
-    "ast_hash": "b188f6238fec839117d07fabd37f8033",
+    "mtime": 1787055548.0873191,
+    "ast_hash": "cdef13d76113c36b3178d0c96c71c3dd",
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/error_mapper.py": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "app/modules/auth/Interfaces/HTTP/schemas.py": {
-    "mtime": 1786585991.8340983,
-    "ast_hash": "ed29cb4b0f18e2f0782e02ce40b33a8c",
+    "mtime": 1787055536.0440123,
+    "ast_hash": "1284086ab6da729fb4a881eb6697b5f4",
     "semantic_hash": ""
   },
   "app/modules/auth/__init__.py": {
@@ -380,8 +380,8 @@
     "semantic_hash": ""
   },
   "tests/test_auth.py": {
-    "mtime": 1786586291.600132,
-    "ast_hash": "f631ab82eccc31c4ae391fbeb3d1a195",
+    "mtime": 1787055553.1078908,
+    "ast_hash": "a1b70f108afbdbd257752d6f88173764",
     "semantic_hash": ""
   },
   "tests/test_users.py": {
@@ -407,6 +407,11 @@
   "requirements.txt": {
     "mtime": 1786167791.9897492,
     "ast_hash": "5643805342a192d139a0d5378fef1c7e",
+    "semantic_hash": ""
+  },
+  "app/modules/auth/Application/UseCases/check_email_exists.py": {
+    "mtime": 1787055522.737811,
+    "ast_hash": "0a6b94f2128b8ecceded1a9af87a46a8",
     "semantic_hash": ""
   }
 }
