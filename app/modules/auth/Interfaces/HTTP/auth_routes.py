@@ -12,6 +12,8 @@ from app.modules.auth.Domain.Enums import UserRole
 from app.modules.auth.Interfaces.HTTP.auth_controller import authController
 from app.modules.auth.Interfaces.HTTP.auth_dependencies import get_current_user
 from app.modules.auth.Interfaces.HTTP.schemas import (
+    EmailCheckRequest,
+    EmailCheckResponse,
     MeSchema,
     RefreshTokenRequest,
     TokenResponse,
@@ -31,6 +33,11 @@ def register(user: UserRegister, db: Session = Depends(get_db)):
 @auth_router.post("/login", response_model=TokenResponse)
 def login(user: UserLogin, db: Session = Depends(get_db)):
     return authController.login(user, db)
+
+
+@auth_router.post("/check-email", response_model=EmailCheckResponse)
+def check_email(email_check: EmailCheckRequest, db: Session = Depends(get_db)):
+    return authController.check_email(email_check, db)
 
 
 @auth_router.post("/refresh", response_model=TokenResponse)

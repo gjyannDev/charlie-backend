@@ -7,6 +7,7 @@ from typing import Any
 from app.modules.auth.Application.Ports.event_publisher import EventPublisherPort
 from app.modules.auth.Application.UseCases import (
     BuildRoleMessageUseCase,
+    CheckEmailExistsUseCase,
     GetCurrentProfileUseCase,
     LoginUserUseCase,
     LogoutUserUseCase,
@@ -14,7 +15,7 @@ from app.modules.auth.Application.UseCases import (
     RegisterUserUseCase,
 )
 from app.modules.auth.Domain.Events import AuthEvent
-from app.modules.auth.Interfaces.HTTP.schemas import UserLogin, UserRegister
+from app.modules.auth.Interfaces.HTTP.schemas import EmailCheckRequest, UserLogin, UserRegister
 
 
 class AuthApplicationService:
@@ -26,6 +27,7 @@ class AuthApplicationService:
         logout_user: LogoutUserUseCase,
         get_current_profile: GetCurrentProfileUseCase,
         build_role_message_use_case: BuildRoleMessageUseCase,
+        check_email_exists: CheckEmailExistsUseCase,
         event_publisher: EventPublisherPort,
     ) -> None:
         self.register_user = register_user
@@ -34,6 +36,7 @@ class AuthApplicationService:
         self.logout_user = logout_user
         self.get_current_profile = get_current_profile
         self.build_role_message_use_case = build_role_message_use_case
+        self.check_email_exists = check_email_exists
         self.event_publisher = event_publisher
 
     def _publish_events(self, events: tuple[AuthEvent, ...]) -> None:
@@ -47,6 +50,11 @@ class AuthApplicationService:
 
     def login(self, user: UserLogin, db: Any) -> dict[str, str]:
         result = self.login_user.execute(user, db)
+        self._publish_events(result.events)
+        return result.value
+
+    def check_email(self, email_check: EmailCheckRequest, db: Any) -> dict[str, bool]:
+        result = self.check_email_exists.execute(email_check, db)
         self._publish_events(result.events)
         return result.value
 

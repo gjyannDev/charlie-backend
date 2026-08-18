@@ -10,7 +10,11 @@ from app.models.user import User
 from app.modules.auth.Application.Errors.auth_errors import AuthApplicationError
 from app.modules.auth.Application.Services import authService
 from app.modules.auth.Interfaces.HTTP.error_mapper import map_auth_error
-from app.modules.auth.Interfaces.HTTP.schemas import UserLogin, UserRegister
+from app.modules.auth.Interfaces.HTTP.schemas import (
+    EmailCheckRequest,
+    UserLogin,
+    UserRegister,
+)
 
 
 class AuthController:
@@ -28,6 +32,9 @@ class AuthController:
 
     def login(self, user: UserLogin, db: Session):
         return self._run_operation(lambda: self.auth_service.login(user, db))
+
+    def check_email(self, email_check: EmailCheckRequest, db: Session):
+        return self._run_operation(lambda: self.auth_service.check_email(email_check, db))
 
     def refresh(self, refresh_token: str, db: Session):
         return self._run_operation(lambda: self.auth_service.refresh(refresh_token, db))

@@ -8,6 +8,7 @@ from app.modules.auth.Application.Services.auth_application_service import (
 )
 from app.modules.auth.Application.UseCases import (
     BuildRoleMessageUseCase,
+    CheckEmailExistsUseCase,
     GetCurrentProfileUseCase,
     LoginUserUseCase,
     LogoutUserUseCase,
@@ -52,5 +53,6 @@ authService = AuthApplicationService(
     ),
     get_current_profile=GetCurrentProfileUseCase(),
     build_role_message_use_case=BuildRoleMessageUseCase(),
+    check_email_exists=CheckEmailExistsUseCase(user_repository=sqlalchemyUserRepository),
     event_publisher=inProcessEventDispatcher,
 )

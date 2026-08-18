@@ -1,4 +1,6 @@
 from .schemas import (
+    EmailCheckRequest,
+    EmailCheckResponse,
     MeSchema,
     RefreshTokenRequest,
     TokenResponse,
@@ -9,6 +11,8 @@ from .schemas import (
 
 __all__ = [
     "AuthController",
+    "EmailCheckRequest",
+    "EmailCheckResponse",
     "MeSchema",
     "RefreshTokenRequest",
     "TokenResponse",

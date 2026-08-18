@@ -23,6 +23,16 @@ class UserLogin(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+class EmailCheckRequest(BaseModel):
+    email: EmailStr
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class EmailCheckResponse(BaseModel):
+    exists: bool
+
+
 class RefreshTokenRequest(BaseModel):
     refresh_token: str
 

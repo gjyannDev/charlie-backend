@@ -60,6 +60,43 @@ def test_register_and_login_flow(client, db_session):
     assert me_response.json()["email"] == "user@example.com"
 
 
+def test_check_email_returns_true_for_existing_email(client):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "known@example.com",
+            "full_name": "Known User",
+            "password": "secret123",
+            "role": "user",
+        },
+    )
+
+    response = client.post("/auth/check-email", json={"email": "known@example.com"})
+
+    assert response.status_code == 200
+    assert response.json() == {"exists": True}
+
+
+def test_check_email_returns_false_for_missing_email(client):
+    response = client.post("/auth/check-email", json={"email": "missing@example.com"})
+
+    assert response.status_code == 200
+    assert response.json() == {"exists": False}
+
+
+def test_check_email_rejects_invalid_email(client):
+    response = client.post("/auth/check-email", json={"email": "not-an-email"})
+
+    assert response.status_code == 422
+
+
+def test_check_email_does_not_require_authentication(client):
+    response = client.post("/auth/check-email", json={"email": "public@example.com"})
+
+    assert response.status_code == 200
+    assert response.json() == {"exists": False}
+
+
 def test_duplicate_register_maps_application_error_to_http(client):
     payload = {
         "email": "duplicate@example.com",
@@ -322,6 +359,7 @@ def test_auth_application_service_publishes_use_case_events():
         logout_user=FakeUseCase(),
         get_current_profile=FakeUseCase(),
         build_role_message_use_case=FakeUseCase(),
+        check_email_exists=FakeUseCase(),
         event_publisher=FakeEventPublisher(),
     )
 
@@ -353,6 +391,7 @@ def test_auth_application_service_does_not_publish_events_on_failure():
         logout_user=UnusedUseCase(),
         get_current_profile=UnusedUseCase(),
         build_role_message_use_case=UnusedUseCase(),
+        check_email_exists=UnusedUseCase(),
         event_publisher=FakeEventPublisher(),
     )
 
