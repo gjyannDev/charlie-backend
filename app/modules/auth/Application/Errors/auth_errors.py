@@ -15,6 +15,10 @@ class EmailAlreadyRegisteredError(AuthApplicationError):
     default_detail = "Email already registered"
 
 
+class EmailNotFoundError(AuthApplicationError):
+    default_detail = "Member account not found"
+
+
 class InvalidCredentialsError(AuthApplicationError):
     default_detail = "Invalid credentials"
 

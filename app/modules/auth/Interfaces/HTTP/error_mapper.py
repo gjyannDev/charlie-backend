@@ -7,6 +7,7 @@ from fastapi import HTTPException
 from app.modules.auth.Application.Errors.auth_errors import (
     AuthApplicationError,
     EmailAlreadyRegisteredError,
+    EmailNotFoundError,
     InvalidCredentialsError,
     InvalidRefreshTokenError,
     InvalidRoleError,
@@ -18,6 +19,7 @@ from app.modules.auth.Application.Errors.auth_errors import (
 
 _AUTH_ERROR_STATUS: dict[type[AuthApplicationError], int] = {
     EmailAlreadyRegisteredError: 400,
+    EmailNotFoundError: 404,
     InvalidCredentialsError: 400,
     InvalidRoleError: 400,
     InvalidRefreshTokenError: 400,

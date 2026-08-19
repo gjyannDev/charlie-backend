@@ -15,7 +15,6 @@ from app.modules.auth.Application.Errors.auth_errors import (
     InvalidRefreshTokenError,
     RefreshTokenRevokedError,
     TokenExpiredError,
-    UserNotFoundError,
 )
 from app.modules.auth.Infrastructure.Persistence import (
     sqlalchemyRefreshTokenRepository,
@@ -139,7 +138,9 @@ class JwtTokenIssuer:
             raise HTTPException(status_code=401, detail="User not found")
         return user
 
-    def verify_token(self, token: str, db: Session, is_refresh: bool = False) -> TokenPayload:
+    def verify_token(
+        self, token: str, db: Session, is_refresh: bool = False
+    ) -> TokenPayload:
         if is_refresh:
             return self.verify_refresh_token(token, db)
         return self.decode_token(token)
@@ -162,4 +163,10 @@ jwtTokenIssuer = JwtTokenIssuer()
 TokenService = JwtTokenIssuer
 tokenService = jwtTokenIssuer
 
-__all__ = ["JwtTokenIssuer", "TokenPayload", "TokenService", "jwtTokenIssuer", "tokenService"]
+__all__ = [
+    "JwtTokenIssuer",
+    "TokenPayload",
+    "TokenService",
+    "jwtTokenIssuer",
+    "tokenService",
+]

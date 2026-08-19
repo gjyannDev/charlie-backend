@@ -5,6 +5,7 @@ Check whether an auth email exists.
 from typing import Any
 
 from app.modules.auth.Application.DTOs.auth_result import AuthUseCaseResult
+from app.modules.auth.Application.Errors.auth_errors import EmailNotFoundError
 from app.modules.auth.Application.Ports.user_repository import UserRepositoryPort
 from app.modules.auth.Interfaces.HTTP.schemas import EmailCheckRequest
 
@@ -17,5 +18,8 @@ class CheckEmailExistsUseCase:
         self, email_check: EmailCheckRequest, db: Any
     ) -> AuthUseCaseResult[dict[str, bool]]:
         db_user = self.user_repository.get_by_email(db, email_check.email)
+
+        if db_user is None:
+            raise EmailNotFoundError()
 
         return AuthUseCaseResult({"exists": db_user is not None}, ())

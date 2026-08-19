@@ -15,7 +15,11 @@ from app.modules.auth.Application.UseCases import (
     RegisterUserUseCase,
 )
 from app.modules.auth.Domain.Events import AuthEvent
-from app.modules.auth.Interfaces.HTTP.schemas import EmailCheckRequest, UserLogin, UserRegister
+from app.modules.auth.Interfaces.HTTP.schemas import (
+    EmailCheckRequest,
+    UserLogin,
+    UserRegister,
+)
 
 
 class AuthApplicationService:

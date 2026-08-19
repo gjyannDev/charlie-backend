@@ -5,6 +5,7 @@ from fastapi import HTTPException
 from app.models.user import Token
 from app.modules.auth.Application.Errors.auth_errors import (
     EmailAlreadyRegisteredError,
+    EmailNotFoundError,
     InvalidCredentialsError,
     InvalidRefreshTokenError,
     InvalidRoleError,
@@ -94,8 +95,8 @@ def test_check_email_returns_true_for_existing_email(client):
 def test_check_email_returns_false_for_missing_email(client):
     response = client.post("/auth/check-email", json={"email": "missing@example.com"})
 
-    assert response.status_code == 200
-    assert response.json() == {"exists": False}
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Member account not found"
 
 
 def test_check_email_rejects_invalid_email(client):
@@ -107,8 +108,8 @@ def test_check_email_rejects_invalid_email(client):
 def test_check_email_does_not_require_authentication(client):
     response = client.post("/auth/check-email", json={"email": "public@example.com"})
 
-    assert response.status_code == 200
-    assert response.json() == {"exists": False}
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Member account not found"
 
 
 def test_duplicate_register_maps_application_error_to_http(client):
@@ -280,6 +281,7 @@ def test_auth_rules_reject_invalid_role():
 def test_auth_error_mapper_preserves_http_contract():
     cases = [
         (EmailAlreadyRegisteredError(), 400, "Email already registered"),
+        (EmailNotFoundError(), 404, "Member account not found"),
         (InvalidCredentialsError(), 400, "Invalid credentials"),
         (InvalidRoleError(), 400, "Invalid role"),
         (InvalidRefreshTokenError(), 400, "Invalid refresh token"),
