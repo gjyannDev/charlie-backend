@@ -7,6 +7,7 @@ from .auth_errors import (
     InvalidUserStateError,
     RefreshTokenRevokedError,
     TokenExpiredError,
+    UserInactiveError,
     UserNotFoundError,
 )
 
@@ -19,5 +20,6 @@ __all__ = [
     "InvalidUserStateError",
     "RefreshTokenRevokedError",
     "TokenExpiredError",
+    "UserInactiveError",
     "UserNotFoundError",
 ]

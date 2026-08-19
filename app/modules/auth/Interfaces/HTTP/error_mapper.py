@@ -14,6 +14,7 @@ from app.modules.auth.Application.Errors.auth_errors import (
     InvalidUserStateError,
     RefreshTokenRevokedError,
     TokenExpiredError,
+    UserInactiveError,
     UserNotFoundError,
 )
 
@@ -25,6 +26,7 @@ _AUTH_ERROR_STATUS: dict[type[AuthApplicationError], int] = {
     InvalidRefreshTokenError: 400,
     RefreshTokenRevokedError: 401,
     TokenExpiredError: 498,
+    UserInactiveError: 403,
     UserNotFoundError: 401,
     InvalidUserStateError: 500,
 }

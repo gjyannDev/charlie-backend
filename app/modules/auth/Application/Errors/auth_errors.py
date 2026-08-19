@@ -43,5 +43,9 @@ class UserNotFoundError(AuthApplicationError):
     default_detail = "User not found"
 
 
+class UserInactiveError(AuthApplicationError):
+    default_detail = "User account is inactive"
+
+
 class InvalidUserStateError(AuthApplicationError):
     default_detail = "User record is invalid"

@@ -2,7 +2,7 @@ from datetime import UTC, datetime, timedelta
 
 from fastapi import HTTPException
 
-from app.models.user import Token
+from app.models.user import Token, User
 from app.modules.auth.Application.Errors.auth_errors import (
     EmailAlreadyRegisteredError,
     EmailNotFoundError,
@@ -11,6 +11,7 @@ from app.modules.auth.Application.Errors.auth_errors import (
     InvalidRoleError,
     InvalidUserStateError,
     RefreshTokenRevokedError,
+    UserInactiveError,
     UserNotFoundError,
 )
 from app.modules.auth.Application.DTOs import AuthUseCaseResult
@@ -128,7 +129,31 @@ def test_duplicate_register_maps_application_error_to_http(client):
     assert duplicate_response.json()["detail"] == "Email already registered"
 
 
-def test_refresh_and_logout_flow(client):
+def test_inactive_user_cannot_login(client, db_session):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "inactive-login@example.com",
+            "full_name": "Inactive Login",
+            "password": "secret123",
+            "role": "user",
+        },
+    )
+    db_user = db_session.query(User).filter(User.email == "inactive-login@example.com").one()
+    db_user.is_active = False
+    db_session.commit()
+
+    login_response = client.post(
+        "/auth/login",
+        json={"email": "inactive-login@example.com", "password": "secret123"},
+    )
+
+    assert login_response.status_code == 403
+    assert login_response.json()["detail"] == "User account is inactive"
+    assert db_session.query(Token).count() == 0
+
+
+def test_refresh_rotation_and_logout_flow(client):
     client.post(
         "/auth/register",
         json={
@@ -149,19 +174,37 @@ def test_refresh_and_logout_flow(client):
         json={"refresh_token": refresh_token},
     )
     assert refresh_response.status_code == 200
-    assert refresh_response.json()["access_token"]
-    assert refresh_response.json()["refresh_token"] is None
+    refresh_payload = refresh_response.json()
+    assert refresh_payload["access_token"]
+    rotated_refresh_token = refresh_payload["refresh_token"]
+    assert rotated_refresh_token
+    assert rotated_refresh_token != refresh_token
+
+    old_token_refresh = client.post(
+        "/auth/refresh",
+        json={"refresh_token": refresh_token},
+    )
+    assert old_token_refresh.status_code == 401
+
+    second_refresh_response = client.post(
+        "/auth/refresh",
+        json={"refresh_token": rotated_refresh_token},
+    )
+    assert second_refresh_response.status_code == 200
+    second_rotated_refresh_token = second_refresh_response.json()["refresh_token"]
+    assert second_rotated_refresh_token
+    assert second_rotated_refresh_token != rotated_refresh_token
 
     logout_response = client.post(
         "/auth/logout",
-        json={"refresh_token": refresh_token},
+        json={"refresh_token": second_rotated_refresh_token},
     )
     assert logout_response.status_code == 200
     assert logout_response.json()["message"] == "Refresh token revoked successfully"
 
     post_logout_refresh = client.post(
         "/auth/refresh",
-        json={"refresh_token": refresh_token},
+        json={"refresh_token": second_rotated_refresh_token},
     )
     assert post_logout_refresh.status_code == 401
 
@@ -191,6 +234,66 @@ def test_refresh_token_expiry_is_enforced(client, db_session):
         json={"refresh_token": refresh_token},
     )
     assert expired_response.status_code == 498
+
+
+def test_inactive_user_cannot_refresh_session(client, db_session):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "inactive-refresh@example.com",
+            "full_name": "Inactive Refresh",
+            "password": "secret123",
+            "role": "user",
+        },
+    )
+    login_response = client.post(
+        "/auth/login",
+        json={"email": "inactive-refresh@example.com", "password": "secret123"},
+    )
+    refresh_token = login_response.json()["refresh_token"]
+
+    db_user = (
+        db_session.query(User).filter(User.email == "inactive-refresh@example.com").one()
+    )
+    db_user.is_active = False
+    db_session.commit()
+
+    refresh_response = client.post(
+        "/auth/refresh",
+        json={"refresh_token": refresh_token},
+    )
+
+    assert refresh_response.status_code == 403
+    assert refresh_response.json()["detail"] == "User account is inactive"
+
+
+def test_inactive_user_cannot_resolve_me_with_existing_token(client, db_session):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "inactive-me@example.com",
+            "full_name": "Inactive Me",
+            "password": "secret123",
+            "role": "user",
+        },
+    )
+    login_response = client.post(
+        "/auth/login",
+        json={"email": "inactive-me@example.com", "password": "secret123"},
+    )
+    access_token = login_response.json()["access_token"]
+
+    db_user = db_session.query(User).filter(User.email == "inactive-me@example.com").one()
+    db_user.is_active = False
+    db_session.commit()
+
+    me_response = client.get(
+        "/auth/me",
+        headers={"Authorization": f"Bearer {access_token}"},
+    )
+
+    assert me_response.status_code == 403
+    assert me_response.json()["detail"] == "User account is inactive"
 
 
 def test_refresh_and_logout_reject_query_params(client):
@@ -252,6 +355,35 @@ def test_admin_endpoint_requires_admin_role(client):
     assert denied_response.status_code == 403
 
 
+def test_inactive_user_is_rejected_by_role_dependency(client, db_session):
+    client.post(
+        "/auth/register",
+        json={
+            "email": "inactive-admin@example.com",
+            "full_name": "Inactive Admin",
+            "password": "secret123",
+            "role": "admin",
+        },
+    )
+    login_response = client.post(
+        "/auth/login",
+        json={"email": "inactive-admin@example.com", "password": "secret123"},
+    )
+    access_token = login_response.json()["access_token"]
+
+    db_user = db_session.query(User).filter(User.email == "inactive-admin@example.com").one()
+    db_user.is_active = False
+    db_session.commit()
+
+    response = client.get(
+        "/auth/admin-role",
+        headers={"Authorization": f"Bearer {access_token}"},
+    )
+
+    assert response.status_code == 403
+    assert response.json()["detail"] == "User account is inactive"
+
+
 def test_users_routes_are_removed(client):
     response = client.post(
         "/users/register",
@@ -286,6 +418,7 @@ def test_auth_error_mapper_preserves_http_contract():
         (InvalidRoleError(), 400, "Invalid role"),
         (InvalidRefreshTokenError(), 400, "Invalid refresh token"),
         (RefreshTokenRevokedError(), 401, "Refresh token revoked"),
+        (UserInactiveError(), 403, "User account is inactive"),
         (UserNotFoundError(), 401, "User not found"),
         (InvalidUserStateError(), 500, "User record is invalid"),
         (InvalidUserStateError("User creation failed"), 500, "User creation failed"),

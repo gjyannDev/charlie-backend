@@ -62,7 +62,7 @@ class AuthApplicationService:
         self._publish_events(result.events)
         return result.value
 
-    def refresh(self, refresh_token: str, db: Any) -> dict[str, str | None]:
+    def refresh(self, refresh_token: str, db: Any) -> dict[str, str]:
         result = self.refresh_access_token.execute(refresh_token, db)
         self._publish_events(result.events)
         return result.value

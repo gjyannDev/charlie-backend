@@ -4,6 +4,7 @@ JWT token issuer implementation.
 
 from datetime import UTC, datetime, timedelta
 from typing import TypedDict
+from uuid import uuid4
 
 from fastapi import HTTPException
 from jose import ExpiredSignatureError, JWTError, jwt
@@ -68,6 +69,7 @@ class JwtTokenIssuer:
         payload = {
             "email": user_email,
             "exp": expire_time,
+            "jti": str(uuid4()),
             "user_id": user_id,
         }
         return jwt.encode(
@@ -136,6 +138,8 @@ class JwtTokenIssuer:
         user = self.user_repository.get_by_id(db, int(payload["user_id"]))
         if not user:
             raise HTTPException(status_code=401, detail="User not found")
+        if not user.is_active:
+            raise HTTPException(status_code=403, detail="User account is inactive")
         return user
 
     def verify_token(

@@ -9,6 +9,7 @@ from app.modules.auth.Application.DTOs.auth_result import AuthUseCaseResult
 from app.modules.auth.Application.Errors.auth_errors import (
     InvalidCredentialsError,
     InvalidUserStateError,
+    UserInactiveError,
 )
 from app.modules.auth.Application.Ports.password_hasher import PasswordHasherPort
 from app.modules.auth.Application.Ports.token_issuer import TokenIssuerPort
@@ -45,6 +46,8 @@ class LoginUserUseCase:
         db_user_id = db_user.id
         if db_user_id is None:
             raise InvalidUserStateError()
+        if not db_user.is_active:
+            raise UserInactiveError()
 
         access_expires = timedelta(minutes=self.access_token_expire_minutes)
         refresh_expires = timedelta(minutes=self.refresh_token_expire_minutes)

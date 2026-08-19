@@ -45,7 +45,10 @@ authService = AuthApplicationService(
     refresh_access_token=RefreshAccessTokenUseCase(
         user_repository=sqlalchemyUserRepository,
         token_issuer=jwtTokenIssuer,
+        refresh_token_repository=sqlalchemyRefreshTokenRepository,
+        unit_of_work=sqlalchemyUnitOfWork,
         access_token_expire_minutes=settings.jwt_access_token_expire_minutes,
+        refresh_token_expire_minutes=settings.jwt_refresh_token_expire_minutes,
     ),
     logout_user=LogoutUserUseCase(
         refresh_token_repository=sqlalchemyRefreshTokenRepository,
